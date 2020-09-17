@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_today"
+        android:icon="@android:drawable/ic_menu_rotate"
+        android:title="@string/menu_rbv_random"
+        android:tint="@android:color/black"/>
+    <item
+        android:id="@+id/navigation_month"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="@string/menu_rbv_share"
+        android:tint="@android:color/black"
+        />
+</menu>
