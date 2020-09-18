@@ -1,4 +1,5 @@
 package com.jhesed.rbv.db;
+
 import android.provider.BaseColumns;
 
 public class BibleVerseContract {

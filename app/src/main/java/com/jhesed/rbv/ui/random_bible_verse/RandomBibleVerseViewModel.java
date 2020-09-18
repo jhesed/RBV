@@ -1,14 +1,14 @@
-package com.jhesed.rbv.ui.home;
+package com.jhesed.rbv.ui.random_bible_verse;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class RandomBibleVerseViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public RandomBibleVerseViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is home fragment");
     }
