@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -35,8 +36,22 @@ public class FragmentRandom extends Fragment {
         this.db = new RandomBibleVerseDbHelper(container.getContext());
         this.db.prepopulateData();
 
-        View layout = inflater.inflate(R.layout.sub_fragment_random_bible_verse_random, container, false);
+        final View layout = inflater.inflate(R.layout.sub_fragment_random_bible_verse_random, container, false);
 
+        randomizeVerse(layout);
+
+        Button randomButton = (Button) layout.findViewById(R.id.button_random);
+        randomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                randomizeVerse(layout);
+            }
+        });
+
+        return layout;
+    }
+
+    public void randomizeVerse(View layout) {
         Cursor cursor = db.select(getRandomId());
         cursor.moveToNext();
 
@@ -59,8 +74,6 @@ public class FragmentRandom extends Fragment {
         final String nasb = cursor.getString(cursor.getColumnIndex(BibleVerseContract.BibleVerseEntry.COL_NASB));
         TextView nasbTextView = (TextView) layout.findViewById(R.id.text_nasb);
         nasbTextView.setText(nasb);
-
-        return layout;
     }
 
     public int getRandomId() {

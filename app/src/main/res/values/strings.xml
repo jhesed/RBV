@@ -17,4 +17,7 @@
     <string name="menu_rbv_random">Random</string>
     <string name="menu_rbv_share">Share</string>
 
+    <!-- Buttons -->
+    <string name="btn_random">Randomize</string>
+
 </resources>

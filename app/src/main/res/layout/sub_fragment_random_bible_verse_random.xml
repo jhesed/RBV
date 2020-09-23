@@ -263,5 +263,24 @@
             android:layout_height="1dp"
             android:background="@android:color/darker_gray" />
 
+        <!-- *********************************** RANDOM BUTTON ****************************************** -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:gravity="center|bottom"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_random"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/colorBackground"
+                android:padding="10dp"
+                android:text="@string/btn_random"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/colorTextBackground" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
