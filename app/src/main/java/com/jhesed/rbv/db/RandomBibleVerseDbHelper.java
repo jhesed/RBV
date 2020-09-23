@@ -22,7 +22,8 @@ public class RandomBibleVerseDbHelper extends SQLiteOpenHelper {
     private SQLiteDatabase myDataBase;
 
     public RandomBibleVerseDbHelper(Context context) {
-        super(context, BibleVerseContract.DB_NAME, null, BibleVerseContract.DB_VERSION);
+        super(context, BibleVerseContract.DB_NAME, null,
+                BibleVerseContract.DB_VERSION);
         this.myContext = context;
         DB_PATH = myContext.getDatabasePath(BibleVerseContract.DB_NAME)
                 .toString();
@@ -86,16 +87,36 @@ public class RandomBibleVerseDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE " + BibleVerseContract.BibleVerseEntry.TABLE + " ( " +
-                BibleVerseContract.BibleVerseEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                BibleVerseContract.BibleVerseEntry.COL_TITLE + " TEXT NOT NULL, " +
-                BibleVerseContract.BibleVerseEntry.COL_MBB + " TEXT NOT NULL, " +
-                BibleVerseContract.BibleVerseEntry.COL_NIV + " TEXT NOT NULL, " +
-                BibleVerseContract.BibleVerseEntry.COL_NASB + " TEXT NOT NULL, " +
-                BibleVerseContract.BibleVerseEntry.COL_DATE_CREATED + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
-                BibleVerseContract.BibleVerseEntry.COL_DATE_MODIFIED + " TIMESTAMP DEFAULT NULL, " +
-                BibleVerseContract.BibleVerseEntry.COL_DATE_LAST_SYNC + " TIMESTAMP DEFAULT NULL, " +
-                BibleVerseContract.BibleVerseEntry.COL_IS_SYNCED + " INTEGER DEFAULT NULL); ";
+        String createTable =
+                "CREATE TABLE " + BibleVerseContract.BibleVerseEntry.TABLE +
+                        " ( " +
+                        BibleVerseContract.BibleVerseEntry._ID +
+                        " INTEGER PRIMARY " +
+                        "KEY AUTOINCREMENT, " +
+                        BibleVerseContract.BibleVerseEntry.COL_TITLE +
+                        " TEXT NOT " +
+                        "NULL, " +
+                        BibleVerseContract.BibleVerseEntry.COL_MBB +
+                        " TEXT NOT " +
+                        "NULL, " +
+                        BibleVerseContract.BibleVerseEntry.COL_NIV +
+                        " TEXT NOT " +
+                        "NULL, " +
+                        BibleVerseContract.BibleVerseEntry.COL_NASB +
+                        " TEXT NOT " +
+                        "NULL, " +
+                        BibleVerseContract.BibleVerseEntry.COL_DATE_CREATED +
+                        " " +
+                        "TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
+                        BibleVerseContract.BibleVerseEntry.COL_DATE_MODIFIED +
+                        " " +
+                        "TIMESTAMP DEFAULT NULL, " +
+                        BibleVerseContract.BibleVerseEntry.COL_DATE_LAST_SYNC +
+                        " " +
+                        "TIMESTAMP DEFAULT NULL, " +
+                        BibleVerseContract.BibleVerseEntry.COL_IS_SYNCED +
+                        " INTEGER" +
+                        " DEFAULT NULL); ";
 
         Log.d(TAG, createTable);
         db.execSQL(createTable);
@@ -110,7 +131,8 @@ public class RandomBibleVerseDbHelper extends SQLiteOpenHelper {
 
     public Cursor selectAll() {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT " + BibleVerseContract.BibleVerseEntry._ID + ", " +
+        String query = "SELECT " + BibleVerseContract.BibleVerseEntry._ID +
+                ", " +
                 BibleVerseContract.BibleVerseEntry.COL_TITLE +
                 " FROM " + BibleVerseContract.BibleVerseEntry.TABLE + ";";
 
@@ -120,12 +142,14 @@ public class RandomBibleVerseDbHelper extends SQLiteOpenHelper {
     public Cursor select(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String query = "SELECT " + BibleVerseContract.BibleVerseEntry.COL_TITLE +
-                ", " + BibleVerseContract.BibleVerseEntry.COL_MBB +
-                ", " + BibleVerseContract.BibleVerseEntry.COL_NIV +
-                ", " + BibleVerseContract.BibleVerseEntry.COL_NASB +
-                " FROM " + BibleVerseContract.BibleVerseEntry.TABLE +
-                " WHERE " + BibleVerseContract.BibleVerseEntry._ID + " = " + id;
+        String query =
+                "SELECT " + BibleVerseContract.BibleVerseEntry.COL_TITLE +
+                        ", " + BibleVerseContract.BibleVerseEntry.COL_MBB +
+                        ", " + BibleVerseContract.BibleVerseEntry.COL_NIV +
+                        ", " + BibleVerseContract.BibleVerseEntry.COL_NASB +
+                        " FROM " + BibleVerseContract.BibleVerseEntry.TABLE +
+                        " WHERE " + BibleVerseContract.BibleVerseEntry._ID +
+                        " = " + id;
 
         return db.rawQuery(query, null);
     }
@@ -164,7 +188,8 @@ public class RandomBibleVerseDbHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         }
 
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(inStream));
+        BufferedReader buffer =
+                new BufferedReader(new InputStreamReader(inStream));
 
         String line = "";
         String tableName = BibleVerseContract.BibleVerseEntry.TABLE;
@@ -174,7 +199,8 @@ public class RandomBibleVerseDbHelper extends SQLiteOpenHelper {
                 BibleVerseContract.BibleVerseEntry.COL_NIV + ", " +
                 BibleVerseContract.BibleVerseEntry.COL_MBB + ", " +
                 BibleVerseContract.BibleVerseEntry.COL_NASB;
-        String startString = "INSERT INTO " + tableName + " (" + columns + ") values(";
+        String startString = "INSERT INTO " + tableName + " (" + columns +
+                ") values(";
         String endString = ");";
 
         SQLiteDatabase db = this.getReadableDatabase();

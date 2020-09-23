@@ -24,18 +24,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@color/colorBackground"
-                >
+                android:background="@color/colorBackground">
 
                 <TextView
                     android:id="@+id/verse_title"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
+                    android:gravity="center"
                     android:padding="10dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorTextBackground"
-                    android:gravity="center"/>
+                    android:textColor="@color/colorTextBackground" />
 
             </LinearLayout>
 

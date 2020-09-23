@@ -36,7 +36,10 @@ public class FragmentRandom extends Fragment {
         this.db = new RandomBibleVerseDbHelper(container.getContext());
         this.db.prepopulateData();
 
-        final View layout = inflater.inflate(R.layout.sub_fragment_random_bible_verse_random, container, false);
+        final View layout =
+                inflater.inflate(
+                        R.layout.sub_fragment_random_bible_verse_random,
+                        container, false);
 
         randomizeVerse(layout);
 
@@ -56,22 +59,31 @@ public class FragmentRandom extends Fragment {
         cursor.moveToNext();
 
         // Set Verse Title
-        final String title = cursor.getString(cursor.getColumnIndex(BibleVerseContract.BibleVerseEntry.COL_TITLE));
-        TextView titleTextView = (TextView) layout.findViewById(R.id.verse_title);
+        final String title =
+                cursor.getString(cursor.getColumnIndex(
+                        BibleVerseContract.BibleVerseEntry.COL_TITLE));
+        TextView titleTextView =
+                (TextView) layout.findViewById(R.id.verse_title);
         titleTextView.setText(title);
 
         // Set MBB Content
-        final String mbb = cursor.getString(cursor.getColumnIndex(BibleVerseContract.BibleVerseEntry.COL_MBB));
+        final String mbb =
+                cursor.getString(cursor.getColumnIndex(
+                        BibleVerseContract.BibleVerseEntry.COL_MBB));
         TextView mbbTextView = (TextView) layout.findViewById(R.id.text_mbb);
         mbbTextView.setText(mbb);
 
         // Set NIV Content
-        final String niv = cursor.getString(cursor.getColumnIndex(BibleVerseContract.BibleVerseEntry.COL_NIV));
+        final String niv =
+                cursor.getString(cursor.getColumnIndex(
+                        BibleVerseContract.BibleVerseEntry.COL_NIV));
         TextView nivTextView = (TextView) layout.findViewById(R.id.text_niv);
         nivTextView.setText(niv);
 
         // Set NASB Content
-        final String nasb = cursor.getString(cursor.getColumnIndex(BibleVerseContract.BibleVerseEntry.COL_NASB));
+        final String nasb =
+                cursor.getString(cursor.getColumnIndex(
+                        BibleVerseContract.BibleVerseEntry.COL_NASB));
         TextView nasbTextView = (TextView) layout.findViewById(R.id.text_nasb);
         nasbTextView.setText(nasb);
     }
