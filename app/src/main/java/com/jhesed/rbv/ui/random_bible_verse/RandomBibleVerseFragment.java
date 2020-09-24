@@ -9,20 +9,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jhesed.rbv.R;
 
 public class RandomBibleVerseFragment extends Fragment {
 
-    private RandomBibleVerseViewModel homeViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this)
-                        .get(RandomBibleVerseViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_random_bible_verse,
                 container, false);
 //        final TextView textView = root.findViewById(R.id.text_home);

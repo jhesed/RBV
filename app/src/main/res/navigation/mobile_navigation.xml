@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/nav_prayer_journal"
-        android:name="com.jhesed.rbv.ui.gallery.GalleryFragment"
+        android:name="com.jhesed.rbv.ui.prayer_journal.FragmentPrayerJournal"
         android:label="@string/menu_prayer_journal"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_prayer_journal" />
 
     <fragment
         android:id="@+id/nav_devotionals"

@@ -16,6 +16,10 @@
     <!-- Sub Menus -->
     <string name="menu_rbv_random">Random</string>
     <string name="menu_rbv_share">Share</string>
+    <string name="menu_pj_personal">Personal</string>
+    <string name="menu_pj_family">Family</string>
+    <string name="menu_pj_church">Church</string>
+    <string name="menu_pj_community">Community</string>
 
     <!-- Buttons -->
     <string name="btn_random">Randomize</string>
