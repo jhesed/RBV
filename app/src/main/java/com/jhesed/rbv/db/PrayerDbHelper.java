@@ -47,13 +47,14 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
                 PrayerContract.PrayerEntry.COL_CATEGORY + " TEXT NOT NULL, " +
                 PrayerContract.PrayerEntry.COL_DAY + " INTEGER DEFAULT NULL, " +
                 PrayerContract.PrayerEntry.COL_IS_REMINDER_ENABLED + " INTEGER DEFAULT NULL, " +
-                PrayerContract.PrayerEntry.COL_REMINDER_TIME + " TIMESTAMP DEFAULT NULL, " +
+                PrayerContract.PrayerEntry.COL_REMINDER_TIME + " DATETIME DEFAULT NULL, " +
                 PrayerContract.PrayerEntry.COL_IS_DONE + " INTEGER DEFAULT 0, " +
                 PrayerContract.PrayerEntry.COL_IS_ANSWERED + " INTEGER DEFAULT 0, " +
                 PrayerContract.PrayerEntry.COL_DATE_CREATED +
-                " TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
-                PrayerContract.PrayerEntry.COL_DATE_MODIFIED + " TIMESTAMP DEFAULT NULL, " +
-                PrayerContract.PrayerEntry.COL_DATE_LAST_SYNC + " TIMESTAMP DEFAULT NULL, " +
+                " DATETIME DEFAULT NULL, " +
+                PrayerContract.PrayerEntry.COL_DATE_MODIFIED +
+                " DATETIME DEFAULT CURRENT_TIMESTAMP, " +
+                PrayerContract.PrayerEntry.COL_DATE_LAST_SYNC + " DATETIME DEFAULT NULL, " +
                 PrayerContract.PrayerEntry.COL_IS_SYNCED + " INTEGER DEFAULT NULL); ";
 
         Log.d(TAG, createTable);
@@ -72,7 +73,7 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
                 PrayerContract.PrayerEntry.COL_TITLE +
                 " FROM " + PrayerContract.PrayerEntry.TABLE + " WHERE " +
                 PrayerContract.PrayerEntry.COL_IS_DONE + " = " + isDone + " AND " +
-                PrayerContract.PrayerEntry.COL_DAY + " = " + day + " AND " +
+//                PrayerContract.PrayerEntry.COL_DAY + " = " + day + " AND " +
                 PrayerContract.PrayerEntry.COL_IS_ANSWERED + " = " + isAnswered + ";";
 
         return db.rawQuery(query, null);
@@ -92,10 +93,21 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
 
     public void update(int id, CharSequence title, CharSequence content, int isAnswered) {
         SQLiteDatabase db = this.getWritableDatabase();
+
         String query = "UPDATE " + PrayerContract.PrayerEntry.TABLE +
                 " SET " + PrayerContract.PrayerEntry.COL_TITLE + "=\"" + title + "\", " +
                 PrayerContract.PrayerEntry.COL_CONTENT + "=\"" + content + "\", " +
                 PrayerContract.PrayerEntry.COL_IS_ANSWERED + "=\"" + isAnswered + "\" " +
+                " WHERE " + PrayerContract.PrayerEntry._ID + "=" + id;
+        db.execSQL(query);
+
+    }
+
+    public void prayerDone(int id, int isDone) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "UPDATE " + PrayerContract.PrayerEntry.TABLE +
+                " SET " + PrayerContract.PrayerEntry.COL_IS_DONE + "=\"" + isDone + "\" " +
                 " WHERE " + PrayerContract.PrayerEntry._ID + "=" + id;
         db.execSQL(query);
     }

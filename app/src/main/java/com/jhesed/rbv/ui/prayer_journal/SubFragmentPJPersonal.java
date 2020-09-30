@@ -157,9 +157,20 @@ public class SubFragmentPJPersonal extends Fragment {
 
         Cursor cursor = dbHelper.selectAll(isDone, day, isAnswered);
 
+        // TODO: Move isDone to Pending every start of day
+//        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+//        Date today = new Date();
+//        Date todayParsed = formatter.parse(formatter.format(today));
+
         while (cursor.moveToNext()) {
+
             prayers.add(
                     cursor.getString(cursor.getColumnIndex(PrayerContract.PrayerEntry.COL_TITLE)));
+
+//            if (todayParsed > Timestamp.valueOf(cursor.getString(cursor.getColumnIndex
+//            (PrayerContract.PrayerEntry.COL_DATE_MODIFIED)))) {
+//
+//            }
 
             // Set Ids as well
             Integer prayerId = cursor.getInt(cursor.getColumnIndex(PrayerContract.PrayerEntry._ID));
@@ -255,6 +266,10 @@ public class SubFragmentPJPersonal extends Fragment {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
+                if (isAnswered == 0) {
+                    dbHelper.prayerDone(prayerId, 1);
+                    initializeList();
+                }
             }
         });
 
@@ -322,7 +337,6 @@ public class SubFragmentPJPersonal extends Fragment {
                 Toast.makeText(getActivity().getBaseContext(), "Success", Toast.LENGTH_LONG).show();
                 dialog.dismiss();
                 initializeList();
-                showDetails(prayerId);
             }
         });
     }

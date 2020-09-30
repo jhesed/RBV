@@ -37,10 +37,10 @@ public class RandomBibleVerseDbHelper extends SQLiteOpenHelper {
         if (dbExist) {
             // do nothing - database already exist
             // TODO: DELETE ALL OF THESE HERE!!!
-            SQLiteDatabase db = this.getReadableDatabase();
-            db.execSQL("DROP TABLE IF EXISTS " + BibleVerseContract.BibleVerseEntry.TABLE);
-            onCreate(db);
-            this.importCSVData();
+//            SQLiteDatabase db = this.getReadableDatabase();
+//            db.execSQL("DROP TABLE IF EXISTS " + BibleVerseContract.BibleVerseEntry.TABLE);
+//            onCreate(db);
+//            this.importCSVData();
         } else {
             this.getWritableDatabase();
             this.importCSVData();
@@ -107,13 +107,13 @@ public class RandomBibleVerseDbHelper extends SQLiteOpenHelper {
                         "NULL, " +
                         BibleVerseContract.BibleVerseEntry.COL_DATE_CREATED +
                         " " +
-                        "TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
+                        "DATETIME DEFAULT NULL, " +
                         BibleVerseContract.BibleVerseEntry.COL_DATE_MODIFIED +
                         " " +
-                        "TIMESTAMP DEFAULT NULL, " +
+                        "DATETIME DEFAULT CURRENT_TIMESTAMP, " +
                         BibleVerseContract.BibleVerseEntry.COL_DATE_LAST_SYNC +
                         " " +
-                        "TIMESTAMP DEFAULT NULL, " +
+                        "DATETIME DEFAULT NULL, " +
                         BibleVerseContract.BibleVerseEntry.COL_IS_SYNCED +
                         " INTEGER" +
                         " DEFAULT NULL); ";
