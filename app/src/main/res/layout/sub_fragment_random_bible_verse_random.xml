@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:orientation="vertical"
-    tools:context=".ui.random_bible_verse.FragmentRandom">
+    tools:context=".ui.random_bible_verse.SubFragmentRBVRandom">
 
     <LinearLayout
         android:layout_width="match_parent"

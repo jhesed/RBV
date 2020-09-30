@@ -1,4 +1,4 @@
-package com.jhesed.rbv.ui.random_bible_verse;
+package com.jhesed.rbv.ui.prayer_journal;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,25 +12,24 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jhesed.rbv.R;
+import com.jhesed.rbv.db.PrayerDbHelper;
 
-public class RandomBibleVerseFragment extends Fragment {
+public class FragmentPJ extends Fragment {
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    PrayerDbHelper db;
 
-        View root = inflater.inflate(R.layout.fragment_random_bible_verse,
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        this.db = new PrayerDbHelper(container.getContext());
+        this.db.prepopulateData();
+
+        View root = inflater.inflate(R.layout.fragment_prayer_journal,
                 container, false);
-//        final TextView textView = root.findViewById(R.id.text_home);
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), new
-//        Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
 
         BottomNavigationView bottomNavigationView =
-                root.findViewById(R.id.navigation_rbv);
+                root.findViewById(R.id.navigation_prayer_journal);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,8 +42,8 @@ public class RandomBibleVerseFragment extends Fragment {
 
                             // ----------------------------- GLIMPSE TODAY
                             // -------------------------------------
-                            case R.id.navigation_today:
-                                selectedFragment = new FragmentRandom();
+                            case R.id.sub_nav_personal:
+                                selectedFragment = new SubFragmentPJPersonal();
                                 break;
                         }
 
@@ -61,10 +60,11 @@ public class RandomBibleVerseFragment extends Fragment {
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction =
                 getFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, FragmentRandom.newInstance());
+        transaction.replace(R.id.frame_layout, new SubFragmentPJPersonal());
         transaction.addToBackStack(null);
         transaction.commit();
 
         return root;
     }
+
 }

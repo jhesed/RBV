@@ -17,12 +17,12 @@ import com.jhesed.rbv.db.RandomBibleVerseDbHelper;
 import java.util.Random;
 
 
-public class FragmentRandom extends Fragment {
+public class SubFragmentRBVRandom extends Fragment {
 
     RandomBibleVerseDbHelper db;
 
-    public static FragmentRandom newInstance() {
-        return new FragmentRandom();
+    public static SubFragmentRBVRandom newInstance() {
+        return new SubFragmentRBVRandom();
     }
 
     @Override

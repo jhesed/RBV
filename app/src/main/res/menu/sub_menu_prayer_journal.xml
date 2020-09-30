@@ -2,7 +2,7 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@string/menu_pj_personal"
+        android:id="@+id/sub_nav_personal"
         android:icon="@drawable/ic_baseline_face_24"
         android:tint="@android:color/black"
         android:title="@string/menu_pj_personal" />
