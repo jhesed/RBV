@@ -39,11 +39,12 @@ public class FragmentPJ extends Fragment {
                             @NonNull MenuItem item) {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
-
-                            // ----------------------------- GLIMPSE TODAY
-                            // -------------------------------------
-                            case R.id.sub_nav_personal:
+                            case R.id.sub_nav_prayer_items:
                                 selectedFragment = new SubFragmentPJPersonal();
+                                break;
+
+                            case R.id.sub_nav_tutorial:
+                                selectedFragment = new SubFragmentHelp();
                                 break;
                         }
 

@@ -16,6 +16,12 @@
     <!-- Sub Menus -->
     <string name="menu_rbv_random">Random</string>
     <string name="menu_rbv_share">Share</string>
+
+    <!-- Release1 PJ Menus -->
+    <string name="menu_pj_prayer_items">Prayer Items</string>
+    <string name="menu_pj_tutorial">Tutorial</string>
+
+    <!-- Future PJ Menus -->
     <string name="menu_pj_personal">Personal</string>
     <string name="menu_pj_family">Family</string>
     <string name="menu_pj_church">Church</string>
@@ -24,4 +30,30 @@
     <!-- Buttons -->
     <string name="btn_random">Randomize</string>
 
+    <!-- Tutorials -->
+    <string name="tutorial_title">How to Use</string>
+    <string name="help_pending">Pending</string>
+    <string name="help_done">Done</string>
+    <string name="help_answered">Answered</string>
+    <string name="help_others">Others</string>
+
+    <string name="text_pending">
+-	Contains prayer items that have not yet been prayed for today.\n
+-	Upon clicking the prayer item, it will automatically be moved to “Done”\n
+-	Items in “Done” will be moved back to “Pending” every 12AM
+    </string>
+
+    <string name="text_done">
+-	Contains prayer items that were already prayed for the day\n
+-	Items in “Done” will be moved back to “Pending” every 12AM
+    </string>
+
+    <string name="text_answered">
+-	Contains prayer items that have been answered already.\n
+-	To do this, press the prayer item and click the edit button (pencil icon).  Click “Yes” in the “Answered” section
+    </string>
+
+    <string name="text_others">
+-	Prayer items can be deleted by long pressing the prayer item, and pressing "Confirm" in the pop-up dialog
+    </string>
 </resources>

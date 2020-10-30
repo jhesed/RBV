@@ -1,0 +1,371 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    tools:context=".ui.random_bible_verse.SubFragmentRBVRandom">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- ***************************************** TITLE ************************************* -->
+
+        <LinearLayout
+            android:id="@+id/container_wh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|fill_vertical"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/colorBackground">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/colorTextBackground"
+                    android:text="@string/tutorial_title"/>
+
+            </LinearLayout>
+
+            <!--DIVIDER-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+        </LinearLayout>
+
+        <!-- ******************************************* PENDING ******************************************* -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorTextBackground"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".10"
+                android:background="@color/colorTextBackground"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!--TITLES-->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/colorTextBackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_pending_title"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:text="@string/help_pending"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold|italic" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight=".9"
+                    android:background="@color/colorTextBackground"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTextBackground"
+                        android:orientation="vertical"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/text_pending"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/text_pending"
+                            android:textAlignment="viewStart"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/colorTextEmphasis" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--DIVIDER-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <!-- ******************************************* DONE ******************************************* -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorTextBackground"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".10"
+                android:background="@color/colorTextBackground"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!--TITLES-->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/colorTextBackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_done_title"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:text="@string/help_done"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold|italic" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight=".9"
+                    android:background="@color/colorTextBackground"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTextBackground"
+                        android:orientation="vertical"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/text_done"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/text_done"
+                            android:textAlignment="viewStart"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/colorTextEmphasis" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--DIVIDER-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <!-- ******************************************* ANSWERED ******************************************* -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorTextBackground"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".10"
+                android:background="@color/colorTextBackground"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!--TITLES-->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/colorTextBackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_answered_title"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:text="@string/help_answered"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold|italic" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight=".9"
+                    android:background="@color/colorTextBackground"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTextBackground"
+                        android:orientation="vertical"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/text_answered"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/text_answered"
+                            android:textAlignment="viewStart"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/colorTextEmphasis" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--DIVIDER-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <!-- ******************************************* OTHERS ******************************************* -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorTextBackground"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".10"
+                android:background="@color/colorTextBackground"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!--TITLES-->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/colorTextBackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_others_title"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:text="@string/help_others"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold|italic" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight=".9"
+                    android:background="@color/colorTextBackground"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTextBackground"
+                        android:orientation="vertical"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/text_others"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/text_others"
+                            android:textAlignment="viewStart"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/colorTextEmphasis" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--DIVIDER-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+    </LinearLayout>
+</ScrollView>
