@@ -70,7 +70,8 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
     public Cursor selectAll(int isDone, int day, int isAnswered) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT " + PrayerContract.PrayerEntry._ID + ", " +
-                PrayerContract.PrayerEntry.COL_TITLE +
+                PrayerContract.PrayerEntry.COL_TITLE + ", " +
+                PrayerContract.PrayerEntry.COL_CATEGORY +
                 " FROM " + PrayerContract.PrayerEntry.TABLE + " WHERE " +
                 PrayerContract.PrayerEntry.COL_IS_DONE + " = " + isDone + " AND " +
 //                PrayerContract.PrayerEntry.COL_DAY + " = " + day + " AND " +
@@ -209,6 +210,8 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
 
     private void importCSVData() throws IOException {
 
+        Log.i("message", "(PrayerDbHelper.importCSVData): Importing CSV data");
+
         String csvFile = "prayer_requests.csv";
         AssetManager manager = this.myContext.getAssets();
         InputStream inStream = null;
@@ -241,7 +244,7 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
             sb.append("'" + str[0] + "',");
             sb.append("'" + str[1].replace("\"", "") + "',");
             sb.append("'" + str[2].replace("\"", "") + "',");
-            sb.append("'" + str[4].replace("\"", "") + "'");
+            sb.append("'" + str[3].replace("\"", "") + "'");
 
             sb.append(endString);
             db.execSQL(sb.toString());

@@ -56,4 +56,7 @@
     <string name="text_others">
 -	Prayer items can be deleted by long pressing the prayer item, and pressing "Confirm" in the pop-up dialog
     </string>
+    <string name="add_details_about_your_prayer">Add details about your Prayer:</string>
+    <string name="title">Title:</string>
+    <string name="edit_prayer_request">Edit Prayer Request</string>
 </resources>

@@ -169,8 +169,14 @@ public class RandomBibleVerseDbHelper extends SQLiteOpenHelper {
 
     public void prepopulateData() {
         try {
+
+            // Random Bible Verse Data
             this.createDataBase();
             this.openDataBase();
+
+            // TODO: Adding Prayer Data here temporarily to make it work
+            PrayerDbHelper prayerDbHelper = new PrayerDbHelper(this.myContext);
+            prayerDbHelper.prepopulateData();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -179,6 +185,7 @@ public class RandomBibleVerseDbHelper extends SQLiteOpenHelper {
 
     private void importCSVData() throws IOException {
 
+        Log.i("message", "(RandomBibleVerseDbHelper.importCSVData): Importing CSV data");
         String csvFile = "bible_verses.csv";
         AssetManager manager = this.myContext.getAssets();
         InputStream inStream = null;

@@ -44,11 +44,15 @@ public class SubFragmentPJPersonal extends Fragment {
     private static ArrayList<Integer> pendingItemIDs;
     private static ArrayList<Integer> doneItemIDs;
     private static ArrayList<Integer> answeredItemIDs;
+    private static ArrayList<String> pendingCategoryItems;
+    private static ArrayList<String> doneCategoryItems;
+    private static ArrayList<String> answeredCategoryItems;
     List<String> groupList;
     List<String> childList;
     List<Integer> childIDList;
     Map<String, List<String>> prayerCollection;
     Map<String, List<Integer>> prayerCollectionIDs;
+    Map<String, List<String>> prayerCategories;
     ExpandableListView expListView;
     private PrayerDbHelper dbHelper;
     private View layout;
@@ -57,7 +61,9 @@ public class SubFragmentPJPersonal extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         this.dbHelper = new PrayerDbHelper(container.getContext());
-        this.dbHelper.prepopulateData();
+
+        // TODO: This should be called here but calling in RBV instead
+//        this.dbHelper.prepopulateData();
 
         this.layout =
                 inflater.inflate(
@@ -86,7 +92,7 @@ public class SubFragmentPJPersonal extends Fragment {
 
         expListView = (ExpandableListView) layout.findViewById(R.id.prayer_list);
         final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
-                getActivity(), groupList, prayerCollection, prayerCollectionIDs);
+                getActivity(), groupList, prayerCollection, prayerCollectionIDs, prayerCategories);
         expListView.setAdapter(expListAdapter);
         expListView.expandGroup(0); // select pending by default
 
@@ -138,6 +144,7 @@ public class SubFragmentPJPersonal extends Fragment {
 
         prayerCollection = new LinkedHashMap<String, List<String>>();
         prayerCollectionIDs = new LinkedHashMap<String, List<Integer>>();
+        prayerCategories = new LinkedHashMap<String, List<String>>();
 
         prayerCollection.put(groupList.get(0), pendingItems);
         prayerCollection.put(groupList.get(1), doneItems);
@@ -147,6 +154,10 @@ public class SubFragmentPJPersonal extends Fragment {
         prayerCollectionIDs.put(groupList.get(1), doneItemIDs);
         prayerCollectionIDs.put(groupList.get(2), answeredItemIDs);
 
+        prayerCategories.put(groupList.get(0), pendingCategoryItems);
+        prayerCategories.put(groupList.get(1), doneCategoryItems);
+        prayerCategories.put(groupList.get(2), answeredCategoryItems);
+
     }
 
     private ArrayList<String> getPrayerItems(int isDone, int isAnswered, int day) {
@@ -154,6 +165,7 @@ public class SubFragmentPJPersonal extends Fragment {
         // Initialize list\
         ArrayList<String> prayers = new ArrayList<String>();
         ArrayList<Integer> ids = new ArrayList<Integer>();
+        ArrayList<String> categories = new ArrayList<String>();
 
         Cursor cursor = dbHelper.selectAll(isDone, day, isAnswered);
 
@@ -175,15 +187,25 @@ public class SubFragmentPJPersonal extends Fragment {
             // Set Ids as well
             Integer prayerId = cursor.getInt(cursor.getColumnIndex(PrayerContract.PrayerEntry._ID));
             ids.add(prayerId);
+
+            // Set Categories as well
+            String category = cursor.getString(cursor.getColumnIndex(PrayerContract.PrayerEntry.COL_CATEGORY));
+            categories.add(category);
         }
 
         // Populate prayer item ids
-        if (isDone == 0 && isAnswered == 0)
+        if (isDone == 0 && isAnswered == 0) {
             pendingItemIDs = ids;
-        else if (isDone == 1 && isAnswered == 0)
+            pendingCategoryItems = categories;
+        }
+        else if (isDone == 1 && isAnswered == 0) {
             doneItemIDs = ids;
-        else if (isAnswered == 1)
+            doneCategoryItems = categories;
+        }
+        else if (isAnswered == 1) {
             answeredItemIDs = ids;
+            answeredCategoryItems = categories;
+        }
 
         return prayers;
     }
@@ -427,7 +449,7 @@ public class SubFragmentPJPersonal extends Fragment {
                 String title = titleObj.getText().toString();
                 String content = contentObj.getText().toString();
 
-                dbHelper.insert(title, content, "PERSONAL");  // TODO: category
+                dbHelper.insert(title, content, "OTHER");  // TODO: category
                 initializeList();  // Reload list
                 Toast.makeText(getActivity().getBaseContext(), "Success", Toast.LENGTH_LONG).show();
                 dialog.dismiss();

@@ -3,6 +3,7 @@ package com.jhesed.rbv.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,19 +18,22 @@ import java.util.Map;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
+    private String TAG = "ExpandableListAdapter";
     private Activity context;
     private Map<String, List<String>> prayerCollections;
     private Map<String, List<Integer>> prayerCollectionIDs;
+    private Map<String, List<String>> prayerCategories;
     private List<String> prayers;
 
     public ExpandableListAdapter(Activity context, List<String> prayers,
                                  Map<String, List<String>> prayerCollections,
-                                 Map<String, List<Integer>> prayerCollectionIDs) {
+                                 Map<String, List<Integer>> prayerCollectionIDs,
+                                 Map<String, List<String>> prayerCategories) {
         this.context = context;
         this.prayerCollections = prayerCollections;
-        this.prayerCollectionIDs = prayerCollectionIDs; // ids of prayer itemss
+        this.prayerCollectionIDs = prayerCollectionIDs; // ids of prayer items
+        this.prayerCategories = prayerCategories;
         this.prayers = prayers;
-
     }
 
     public Object getChild(int groupPosition, int childPosition) {
@@ -38,6 +42,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     public Object getChildDBID(int groupPosition, int childPosition) {
         return prayerCollectionIDs.get(prayers.get(groupPosition)).get(childPosition);
+    }
+
+    public Object getChildCategory(int groupPosition, int childPosition) {
+        return prayerCategories.get(prayers.get(groupPosition)).get(childPosition);
     }
 
     public long getChildId(int groupPosition, int childPosition) {
@@ -60,10 +68,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         TextView item = (TextView) convertView.findViewById(R.id.prayer_item);
 
-        ImageView infoIcon = (ImageView) convertView.findViewById(R.id.info_icon);
-
         item.setText(prayer);
         convertView.setTag(prayerId);
+
+        this.updateCategoryIcon(groupPosition, childPosition, convertView);
+
         return convertView;
     }
 
@@ -104,5 +113,30 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
+    }
+
+    private void updateCategoryIcon(int groupPosition, int childPosition, View convertView) {
+        // Update category icon
+        final String category = (String) getChildCategory(groupPosition, childPosition);
+        final ImageView categoryObj = (ImageView) convertView.findViewById(R.id.category);
+
+        Log.i(this.TAG, "(ExpandableListAdapter.updateCategoryIcon) Got category: " + category);
+        if (category.equals("PERSONAL")) {
+            categoryObj.setImageResource(R.drawable.ic_baseline_face_24);
+        }
+        else if (category.equals("FAMILY")) {
+            categoryObj.setImageResource(R.drawable.ic_baseline_home_24);
+        }
+        else if (category.equals("CHURCH")) {
+            categoryObj.setImageResource(R.drawable.ic_baseline_location_city_24);
+        }
+        else if (category.equals("COMMUNITY")){
+            categoryObj.setImageResource(R.drawable.ic_baseline_supervised_user_circle_24);
+        }
+        else {
+            // Generic category for now
+            // TODO: V2: User should be able to add their own category
+            categoryObj.setImageResource(R.drawable.ic_pray);
+        }
     }
 }
