@@ -93,8 +93,16 @@ public class SubFragmentPJPersonal extends Fragment {
         expListView = (ExpandableListView) layout.findViewById(R.id.prayer_list);
         final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
                 getActivity(), groupList, prayerCollection, prayerCollectionIDs, prayerCategories);
+
         expListView.setAdapter(expListAdapter);
-        expListView.expandGroup(0); // select pending by default
+
+        // Open accordion based on content
+        if (pendingItems.size() > 0)
+            expListView.expandGroup(0);
+        else if(doneItems.size() > 0)
+            expListView.expandGroup(1);
+        else
+            expListView.expandGroup(2);
 
         //setGroupIndicatorToRight();
 
