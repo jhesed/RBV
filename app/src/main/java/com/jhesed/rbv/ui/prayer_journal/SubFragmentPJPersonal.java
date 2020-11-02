@@ -199,7 +199,7 @@ public class SubFragmentPJPersonal extends Fragment {
             int lastModified = cursor.getInt(cursor.getColumnIndex(
                     PrayerContract.PrayerEntry.COL_DATE_MODIFIED)
             );
-            if (epochNow - lastModified >= RESET_DONE_ITEMS_SECONDS) {
+            if (epochNow - lastModified >= RESET_DONE_ITEMS_SECONDS && isAnswered != 1) {
                 // Revert back Done to Pending
                 this.dbHelper.prayerDone(prayerId, 0);
 
