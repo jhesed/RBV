@@ -122,17 +122,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 //        Log.d(this.TAG, "(ExpandableListAdapter.updateCategoryIcon) Got category: " + category);
         if (category.equals("PERSONAL")) {
             categoryObj.setImageResource(R.drawable.ic_baseline_face_24);
-        }
-        else if (category.equals("FAMILY")) {
+        } else if (category.equals("FAMILY")) {
             categoryObj.setImageResource(R.drawable.ic_baseline_home_24);
-        }
-        else if (category.equals("CHURCH")) {
+        } else if (category.equals("CHURCH")) {
             categoryObj.setImageResource(R.drawable.ic_baseline_location_city_24);
-        }
-        else if (category.equals("COMMUNITY")){
+        } else if (category.equals("COMMUNITY")) {
             categoryObj.setImageResource(R.drawable.ic_baseline_supervised_user_circle_24);
-        }
-        else {
+        } else {
             // Generic category for now
             // TODO: V2: User should be able to add their own category
             categoryObj.setImageResource(R.drawable.ic_pray);

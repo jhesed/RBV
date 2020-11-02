@@ -47,6 +47,7 @@ public class SubFragmentPJPersonal extends Fragment {
     private static ArrayList<String> pendingCategoryItems;
     private static ArrayList<String> doneCategoryItems;
     private static ArrayList<String> answeredCategoryItems;
+    private final int RESET_DONE_ITEMS_SECONDS = 86400;  // 1 day
     List<String> groupList;
     List<String> childList;
     List<Integer> childIDList;
@@ -54,7 +55,6 @@ public class SubFragmentPJPersonal extends Fragment {
     Map<String, List<Integer>> prayerCollectionIDs;
     Map<String, List<String>> prayerCategories;
     ExpandableListView expListView;
-    private final int RESET_DONE_ITEMS_SECONDS = 86400;  // 1 day
     private PrayerDbHelper dbHelper;
     private View layout;
 
@@ -112,7 +112,7 @@ public class SubFragmentPJPersonal extends Fragment {
         // Open accordion based on content
         if (pendingItems.size() > 0)
             expListView.expandGroup(0);
-        else if(doneItems.size() > 0)
+        else if (doneItems.size() > 0)
             expListView.expandGroup(1);
         else
             expListView.expandGroup(2);
@@ -199,34 +199,31 @@ public class SubFragmentPJPersonal extends Fragment {
             int lastModified = cursor.getInt(cursor.getColumnIndex(
                     PrayerContract.PrayerEntry.COL_DATE_MODIFIED)
             );
-            if (epochNow - lastModified >= RESET_DONE_ITEMS_SECONDS){
+            if (epochNow - lastModified >= RESET_DONE_ITEMS_SECONDS) {
                 // Revert back Done to Pending
                 this.dbHelper.prayerDone(prayerId, 0);
 
-                if(!pendingItemIDs.contains(prayerId)){
+                if (!pendingItemIDs.contains(prayerId)) {
                     pendingItems.add(title);
                     pendingItemIDs.add(prayerId);
                     pendingCategoryItems.add(category);
                 }
-            }
-            else {
+            } else {
                 // Populate prayer item ids
                 if (isDone == 0 && isAnswered == 0) {
-                    if(!pendingItemIDs.contains(prayerId)) {
+                    if (!pendingItemIDs.contains(prayerId)) {
                         pendingItems.add(title);
                         pendingItemIDs.add(prayerId);
                         pendingCategoryItems.add(category);
                     }
-                }
-                else if (isDone == 1 && isAnswered == 0) {
-                    if(!doneItemIDs.contains(prayerId)){
+                } else if (isDone == 1 && isAnswered == 0) {
+                    if (!doneItemIDs.contains(prayerId)) {
                         doneItems.add(title);
                         doneItemIDs.add(prayerId);
                         doneCategoryItems.add(category);
                     }
-                }
-                else if (isAnswered == 1) {
-                    if(!answeredItemIDs.contains(prayerId)){
+                } else if (isAnswered == 1) {
+                    if (!answeredItemIDs.contains(prayerId)) {
                         answeredItems.add(title);
                         answeredItemIDs.add(prayerId);
                         answeredCategoryItems.add(category);

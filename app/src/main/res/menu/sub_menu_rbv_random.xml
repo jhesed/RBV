@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-<!--    <item-->
-<!--        android:id="@+id/navigation_random"-->
-<!--        android:icon="@android:drawable/ic_menu_rotate"-->
-<!--        android:tint="@android:color/black"-->
-<!--        android:title="@string/menu_rbv_random" />-->
-<!--    <item-->
-<!--        android:id="@+id/navigation_month"-->
-<!--        android:icon="@android:drawable/ic_menu_share"-->
-<!--        android:tint="@android:color/black"-->
-<!--        android:title="@string/menu_rbv_share" />-->
+<menu>
+    <!--    <item-->
+    <!--        android:id="@+id/navigation_random"-->
+    <!--        android:icon="@android:drawable/ic_menu_rotate"-->
+    <!--        android:tint="@android:color/black"-->
+    <!--        android:title="@string/menu_rbv_random" />-->
+    <!--    <item-->
+    <!--        android:id="@+id/navigation_month"-->
+    <!--        android:icon="@android:drawable/ic_menu_share"-->
+    <!--        android:tint="@android:color/black"-->
+    <!--        android:title="@string/menu_rbv_share" />-->
 </menu>

@@ -1,20 +1,14 @@
 package com.jhesed.rbv.ui.prayer_journal;
 
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.jhesed.rbv.R;
-import com.jhesed.rbv.db.BibleVerseContract;
 import com.jhesed.rbv.db.RandomBibleVerseDbHelper;
-
-import java.util.Random;
 
 
 public class SubFragmentHelp extends Fragment {

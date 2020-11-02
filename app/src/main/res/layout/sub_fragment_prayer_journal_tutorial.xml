@@ -33,9 +33,9 @@
                     android:layout_margin="5dp"
                     android:gravity="center"
                     android:padding="10dp"
+                    android:text="@string/tutorial_title"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="@color/colorTextBackground"
-                    android:text="@string/tutorial_title"/>
+                    android:textColor="@color/colorTextBackground" />
 
             </LinearLayout>
 
