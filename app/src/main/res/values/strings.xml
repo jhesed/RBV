@@ -40,12 +40,12 @@
     <string name="text_pending">
 -	Contains prayer items that have not yet been prayed for today.\n
 -	Upon clicking the prayer item, it will automatically be moved to “Done”\n
--	Items in “Done” will be moved back to “Pending” every 12AM
+-	Items in “Done” will be moved back to “Pending” after 24 hours (from when it was moved from "Pending" to "Done")
     </string>
 
     <string name="text_done">
 -	Contains prayer items that were already prayed for the day\n
--	Items in “Done” will be moved back to “Pending” every 12AM
+-	Items in “Done” will be moved back to “Pending” after 24 hours (from when it was moved from "Pending" to "Done")
     </string>
 
     <string name="text_answered">

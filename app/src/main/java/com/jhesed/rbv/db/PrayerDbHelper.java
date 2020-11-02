@@ -52,8 +52,7 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
                 PrayerContract.PrayerEntry.COL_IS_ANSWERED + " INTEGER DEFAULT 0, " +
                 PrayerContract.PrayerEntry.COL_DATE_CREATED +
                 " DATETIME DEFAULT NULL, " +
-                PrayerContract.PrayerEntry.COL_DATE_MODIFIED +
-                " DATETIME DEFAULT CURRENT_TIMESTAMP, " +
+                PrayerContract.PrayerEntry.COL_DATE_MODIFIED + " INTEGER DEFAULT 0, " +
                 PrayerContract.PrayerEntry.COL_DATE_LAST_SYNC + " DATETIME DEFAULT NULL, " +
                 PrayerContract.PrayerEntry.COL_IS_SYNCED + " INTEGER DEFAULT NULL); ";
 
@@ -71,6 +70,7 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT " + PrayerContract.PrayerEntry._ID + ", " +
                 PrayerContract.PrayerEntry.COL_TITLE + ", " +
+                PrayerContract.PrayerEntry.COL_DATE_MODIFIED + ", " +
                 PrayerContract.PrayerEntry.COL_CATEGORY +
                 " FROM " + PrayerContract.PrayerEntry.TABLE + " WHERE " +
                 PrayerContract.PrayerEntry.COL_IS_DONE + " = " + isDone + " AND " +
@@ -85,6 +85,7 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
 
         String query = "SELECT " + PrayerContract.PrayerEntry.COL_TITLE +
                 ", " + PrayerContract.PrayerEntry.COL_CONTENT +
+                ", " + PrayerContract.PrayerEntry.COL_DATE_MODIFIED +
                 ", " + PrayerContract.PrayerEntry.COL_IS_ANSWERED +
                 " FROM " + PrayerContract.PrayerEntry.TABLE +
                 " WHERE " + PrayerContract.PrayerEntry._ID + " = " + id;
@@ -95,10 +96,13 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
     public void update(int id, CharSequence title, CharSequence content, int isAnswered) {
         SQLiteDatabase db = this.getWritableDatabase();
 
+        int epochNow = (int) (System.currentTimeMillis() / 1000l);
+
         String query = "UPDATE " + PrayerContract.PrayerEntry.TABLE +
                 " SET " + PrayerContract.PrayerEntry.COL_TITLE + "=\"" + title + "\", " +
                 PrayerContract.PrayerEntry.COL_CONTENT + "=\"" + content + "\", " +
-                PrayerContract.PrayerEntry.COL_IS_ANSWERED + "=\"" + isAnswered + "\" " +
+                PrayerContract.PrayerEntry.COL_IS_ANSWERED + "=\"" + isAnswered + "\", " +
+                PrayerContract.PrayerEntry.COL_DATE_MODIFIED + "=\"" + epochNow + "\" " +
                 " WHERE " + PrayerContract.PrayerEntry._ID + "=" + id;
         db.execSQL(query);
 
@@ -107,8 +111,10 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
     public void prayerDone(int id, int isDone) {
         SQLiteDatabase db = this.getWritableDatabase();
 
+        int epochNow = (int) (System.currentTimeMillis() / 1000l);
         String query = "UPDATE " + PrayerContract.PrayerEntry.TABLE +
                 " SET " + PrayerContract.PrayerEntry.COL_IS_DONE + "=\"" + isDone + "\" " +
+                " ," + PrayerContract.PrayerEntry.COL_DATE_MODIFIED + "=\"" + epochNow + "\" " +
                 " WHERE " + PrayerContract.PrayerEntry._ID + "=" + id;
         db.execSQL(query);
     }
@@ -127,6 +133,8 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
         values.put(PrayerContract.PrayerEntry.COL_TITLE, title);
         values.put(PrayerContract.PrayerEntry.COL_CONTENT, content);
         values.put(PrayerContract.PrayerEntry.COL_DAY, getDayInInteger());
+        values.put(PrayerContract.PrayerEntry.COL_DATE_MODIFIED,
+                (int) (System.currentTimeMillis() / 1000l));
         values.put(PrayerContract.PrayerEntry.COL_CATEGORY, category);
         db.insertWithOnConflict(PrayerContract.PrayerEntry.TABLE,
                 null, values, SQLiteDatabase.CONFLICT_REPLACE);
@@ -230,13 +238,18 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
         String columns = "_id, " +
                 PrayerContract.PrayerEntry.COL_TITLE + ", " +
                 PrayerContract.PrayerEntry.COL_CONTENT + ", " +
-                PrayerContract.PrayerEntry.COL_CATEGORY;
+                PrayerContract.PrayerEntry.COL_CATEGORY + ", " +
+                PrayerContract.PrayerEntry.COL_DATE_MODIFIED;
+
         String startString = "INSERT INTO " + tableName + " (" + columns +
                 ") values(";
         String endString = ");";
 
         SQLiteDatabase db = this.getReadableDatabase();
         db.beginTransaction();
+
+        int epochNow = (int) (System.currentTimeMillis() / 1000l);
+
         while ((line = buffer.readLine()) != null) {
             StringBuilder sb = new StringBuilder(startString);
             String[] str = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
@@ -244,7 +257,8 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
             sb.append("'" + str[0] + "',");
             sb.append("'" + str[1].replace("\"", "") + "',");
             sb.append("'" + str[2].replace("\"", "") + "',");
-            sb.append("'" + str[3].replace("\"", "") + "'");
+            sb.append("'" + str[3].replace("\"", "") + "',");
+            sb.append("'" + epochNow + "'");
 
             sb.append(endString);
             db.execSQL(sb.toString());

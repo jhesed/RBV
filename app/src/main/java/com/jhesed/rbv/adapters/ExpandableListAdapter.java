@@ -3,7 +3,6 @@ package com.jhesed.rbv.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,7 +119,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         final String category = (String) getChildCategory(groupPosition, childPosition);
         final ImageView categoryObj = (ImageView) convertView.findViewById(R.id.category);
 
-        Log.i(this.TAG, "(ExpandableListAdapter.updateCategoryIcon) Got category: " + category);
+//        Log.d(this.TAG, "(ExpandableListAdapter.updateCategoryIcon) Got category: " + category);
         if (category.equals("PERSONAL")) {
             categoryObj.setImageResource(R.drawable.ic_baseline_face_24);
         }

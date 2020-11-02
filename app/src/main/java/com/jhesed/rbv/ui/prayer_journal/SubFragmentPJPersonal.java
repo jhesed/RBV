@@ -34,10 +34,10 @@ import java.util.Map;
 public class SubFragmentPJPersonal extends Fragment {
 
     // Labels
+    private static final String TAG = "SubFragmentPJPersonal";
     private static final String PENDING_TITLE = "Pending";
     private static final String DONE_TITLE = "Done";
     private static final String ANSWERED_TITLE = "Answered";
-    private static final String TAG = "TodayPrayer";
     private static ArrayList<String> pendingItems;
     private static ArrayList<String> doneItems;
     private static ArrayList<String> answeredItems;
@@ -54,6 +54,7 @@ public class SubFragmentPJPersonal extends Fragment {
     Map<String, List<Integer>> prayerCollectionIDs;
     Map<String, List<String>> prayerCategories;
     ExpandableListView expListView;
+    private final int RESET_DONE_ITEMS_SECONDS = 86400;  // 1 day
     private PrayerDbHelper dbHelper;
     private View layout;
 
@@ -87,6 +88,18 @@ public class SubFragmentPJPersonal extends Fragment {
          * Initialize expandable list of prayer items
          * **/
 
+        // Initialize lists
+        pendingItems = new ArrayList<>();
+        doneItems = new ArrayList<>();
+        answeredItems = new ArrayList<>();
+        pendingItemIDs = new ArrayList<>();
+        doneItemIDs = new ArrayList<>();
+        answeredItemIDs = new ArrayList<>();
+        pendingCategoryItems = new ArrayList<>();
+        doneCategoryItems = new ArrayList<>();
+        answeredCategoryItems = new ArrayList<>();
+
+        // Populate lists
         createGroupList();
         createCollection();
 
@@ -139,13 +152,13 @@ public class SubFragmentPJPersonal extends Fragment {
         groupList = new ArrayList<String>();
 
         // Fetch prayer items from database
-        pendingItems = getPrayerItems(0, 0, dbHelper.getDayInInteger());
-        doneItems = getPrayerItems(1, 0, dbHelper.getDayInInteger());
-        answeredItems = getPrayerItems(0, 1, dbHelper.getDayInInteger());
+        getPrayerItems(1, 0, dbHelper.getDayInInteger());
+        getPrayerItems(0, 0, dbHelper.getDayInInteger());
+        getPrayerItems(0, 1, dbHelper.getDayInInteger());
 
-        groupList.add(this.PENDING_TITLE + " (" + pendingItems.size() + ")");
-        groupList.add(this.DONE_TITLE + " (" + doneItems.size() + ")");
-        groupList.add(this.ANSWERED_TITLE + " (" + answeredItems.size() + ")");
+        groupList.add(PENDING_TITLE + " (" + pendingItems.size() + ")");
+        groupList.add(DONE_TITLE + " (" + doneItems.size() + ")");
+        groupList.add(ANSWERED_TITLE + " (" + answeredItems.size() + ")");
     }
 
     private void createCollection() {
@@ -168,54 +181,59 @@ public class SubFragmentPJPersonal extends Fragment {
 
     }
 
-    private ArrayList<String> getPrayerItems(int isDone, int isAnswered, int day) {
-
-        // Initialize list\
-        ArrayList<String> prayers = new ArrayList<String>();
-        ArrayList<Integer> ids = new ArrayList<Integer>();
-        ArrayList<String> categories = new ArrayList<String>();
+    private void getPrayerItems(int isDone, int isAnswered, int day) {
 
         Cursor cursor = dbHelper.selectAll(isDone, day, isAnswered);
-
-        // TODO: Move isDone to Pending every start of day
-//        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-//        Date today = new Date();
-//        Date todayParsed = formatter.parse(formatter.format(today));
+        int epochNow = (int) (System.currentTimeMillis() / 1000l);
 
         while (cursor.moveToNext()) {
 
-            prayers.add(
-                    cursor.getString(cursor.getColumnIndex(PrayerContract.PrayerEntry.COL_TITLE)));
+            // Retrieve prayer details
+            int prayerId =
+                    cursor.getInt(cursor.getColumnIndex(PrayerContract.PrayerEntry._ID));
+            String title = cursor.getString(
+                    cursor.getColumnIndex(PrayerContract.PrayerEntry.COL_TITLE));
+            String category = cursor.getString(
+                    cursor.getColumnIndex(PrayerContract.PrayerEntry.COL_CATEGORY));
 
-//            if (todayParsed > Timestamp.valueOf(cursor.getString(cursor.getColumnIndex
-//            (PrayerContract.PrayerEntry.COL_DATE_MODIFIED)))) {
-//
-//            }
+            int lastModified = cursor.getInt(cursor.getColumnIndex(
+                    PrayerContract.PrayerEntry.COL_DATE_MODIFIED)
+            );
+            if (epochNow - lastModified >= RESET_DONE_ITEMS_SECONDS){
+                // Revert back Done to Pending
+                this.dbHelper.prayerDone(prayerId, 0);
 
-            // Set Ids as well
-            Integer prayerId = cursor.getInt(cursor.getColumnIndex(PrayerContract.PrayerEntry._ID));
-            ids.add(prayerId);
-
-            // Set Categories as well
-            String category = cursor.getString(cursor.getColumnIndex(PrayerContract.PrayerEntry.COL_CATEGORY));
-            categories.add(category);
+                if(!pendingItemIDs.contains(prayerId)){
+                    pendingItems.add(title);
+                    pendingItemIDs.add(prayerId);
+                    pendingCategoryItems.add(category);
+                }
+            }
+            else {
+                // Populate prayer item ids
+                if (isDone == 0 && isAnswered == 0) {
+                    if(!pendingItemIDs.contains(prayerId)) {
+                        pendingItems.add(title);
+                        pendingItemIDs.add(prayerId);
+                        pendingCategoryItems.add(category);
+                    }
+                }
+                else if (isDone == 1 && isAnswered == 0) {
+                    if(!doneItemIDs.contains(prayerId)){
+                        doneItems.add(title);
+                        doneItemIDs.add(prayerId);
+                        doneCategoryItems.add(category);
+                    }
+                }
+                else if (isAnswered == 1) {
+                    if(!answeredItemIDs.contains(prayerId)){
+                        answeredItems.add(title);
+                        answeredItemIDs.add(prayerId);
+                        answeredCategoryItems.add(category);
+                    }
+                }
+            }
         }
-
-        // Populate prayer item ids
-        if (isDone == 0 && isAnswered == 0) {
-            pendingItemIDs = ids;
-            pendingCategoryItems = categories;
-        }
-        else if (isDone == 1 && isAnswered == 0) {
-            doneItemIDs = ids;
-            doneCategoryItems = categories;
-        }
-        else if (isAnswered == 1) {
-            answeredItemIDs = ids;
-            answeredCategoryItems = categories;
-        }
-
-        return prayers;
     }
 
     private void loadChild(ArrayList<String> prayerModels) {
