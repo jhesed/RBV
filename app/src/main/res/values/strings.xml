@@ -59,4 +59,14 @@
     <string name="add_details_about_your_prayer">Add details about your Prayer:</string>
     <string name="title">Title:</string>
     <string name="edit_prayer_request">Edit Prayer Request</string>
+
+    <string name="title_about">About</string>
+    <string name="about1">Random Bible Verse is a simple mobile application used for randomly generating Bible Verses on the fly. This can be useful when you simply want to refresh yourself with inspiring Bible Verses, or you want to share a Scripture snippet to someone else.  </string>
+    <string name="about2">This also now contains Prayer List Section, where you can create your custom prayer items.</string>
+    <string name="about3">In the future, we\'ll also add some Bible Trivia, and playable Online Services and Original Praise and Worship Music</string>
+    <string name="developer_label">Developer:</string>
+    <string name="donate_btc_label">Donate BTC:</string>
+    <string name="developer_email_value">dev.jhesed@gmail.com</string>
+    <string name="donate_btc_value">3DK8NFyGUJorowYDxcgkCp22hmKdEfnyS6</string>4
+    <string name="developers">dev.jhesed@gmail.com</string>
 </resources>
