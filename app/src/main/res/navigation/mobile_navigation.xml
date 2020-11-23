@@ -19,7 +19,13 @@
 
     <fragment
         android:id="@+id/nav_devotionals"
+        android:name="com.jhesed.rbv.ui.devotionals.FragmentDevotionals"
+        android:label="@string/devotionals"
+        tools:layout="@layout/fragment_devotionals" />
+
+    <fragment
+        android:id="@+id/nav_about"
         android:name="com.jhesed.rbv.ui.about.AboutFragment"
-        android:label="@string/menu_devotionals"
+        android:label="@string/about"
         tools:layout="@layout/fragment_about" />
 </navigation>

@@ -69,4 +69,14 @@
     <string name="developer_email_value">dev.jhesed@gmail.com</string>
     <string name="donate_btc_value">3DK8NFyGUJorowYDxcgkCp22hmKdEfnyS6</string>4
     <string name="developers">dev.jhesed@gmail.com</string>
+
+    <!-- RSS Feeds -->
+    <string name="alert_title">Attention!</string>
+    <string name="alert_message">Unable to load data. \nCheck your connection!</string>
+    <string name="alert_positive">Close</string>
+    <string name="video">Video</string>
+    <string name="rss_feeds">RSS Feeds</string>
+    <string name="news">News</string>
+    <string name="devotionals">Devotionals</string>
+    <string name="about">About</string>
 </resources>
