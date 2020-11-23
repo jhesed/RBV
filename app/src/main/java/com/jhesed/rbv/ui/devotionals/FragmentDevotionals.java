@@ -41,23 +41,23 @@ public class FragmentDevotionals extends Fragment {
                         switch (item.getItemId()) {
                             case R.id.sub_nav_devotional1:
                                 selectedFragment = SubFragmentDevotionalsContent
-                                        .newInstance("https://wordpoints.com/feed/");
+                                        .newInstance("https://wordpoints.com/feed/", "Word Points");
                                 break;
                             case R.id.sub_nav_devotional2:
                                 selectedFragment = SubFragmentDevotionalsContent.newInstance(
-                                        "https://devotionaltreasure.wordpress.com/feed/");
+                                        "https://devotionaltreasure.wordpress.com/feed/", "Devotional Treasure");
                                 break;
                             case R.id.sub_nav_devotional3:
                                 selectedFragment = SubFragmentDevotionalsContent
-                                        .newInstance("https://everydaywithgod.com/feed/");
+                                        .newInstance("https://everydaywithgod.com/feed/", "Everyday with God");
                                 break;
                             case R.id.sub_nav_devotional4:
                                 selectedFragment = SubFragmentDevotionalsContent
-                                        .newInstance("https://www.biblegateway.com/blog/feed/");
+                                        .newInstance("https://www.biblegateway.com/blog/feed/", "Bible Gateway");
                                 break;
                             case R.id.sub_nav_devotional5:
                                 selectedFragment = SubFragmentDevotionalsContent.newInstance(
-                                        "https://thegoodnewsherald.wordpress.com/feed/");
+                                        "https://thegoodnewsherald.wordpress.com/feed/", "The Good News Herald");
                                 break;
                         }
 
@@ -77,7 +77,7 @@ public class FragmentDevotionals extends Fragment {
         FragmentTransaction transaction =
                 getFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout,
-                SubFragmentDevotionalsContent.newInstance("https://wordpoints.com/feed/"));
+                SubFragmentDevotionalsContent.newInstance("https://wordpoints.com/feed/", "Word Points"));
         transaction.addToBackStack(null);
         transaction.commit();
 

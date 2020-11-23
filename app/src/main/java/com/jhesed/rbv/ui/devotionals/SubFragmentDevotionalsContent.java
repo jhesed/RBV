@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -27,15 +29,18 @@ import com.jhesed.rbv.adapters.MainViewModel;
 public class SubFragmentDevotionalsContent extends Fragment {
 
     private static String urlString;
+    private static String sourceTitle;
     private RecyclerView mRecyclerView;
     private ArticleAdapter mAdapter;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private ProgressBar progressBar;
     private MainViewModel viewModel;
-    private RelativeLayout relativeLayout;
+    private ScrollView relativeLayout;
+    private TextView sourceTitleTextView;
 
-    public static SubFragmentDevotionalsContent newInstance(String rssFeedUrl) {
+    public static SubFragmentDevotionalsContent newInstance(String rssFeedUrl, String rssSourceTitle) {
         urlString = rssFeedUrl;
+        sourceTitle = rssSourceTitle;
         return new SubFragmentDevotionalsContent();
     }
 
@@ -64,6 +69,8 @@ public class SubFragmentDevotionalsContent extends Fragment {
         mRecyclerView.setHasFixedSize(true);
 
         relativeLayout = layout.findViewById(R.id.root_layout);
+        sourceTitleTextView = layout.findViewById(R.id.source_title);
+        sourceTitleTextView.setText(sourceTitle);
 
         viewModel.getChannel().observe(getViewLifecycleOwner(), channel -> {
             if (channel != null) {

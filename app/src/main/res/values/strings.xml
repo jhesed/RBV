@@ -79,4 +79,9 @@
     <string name="news">News</string>
     <string name="devotionals">Devotionals</string>
     <string name="about">About</string>
+    <string name="word_points">Word Points</string>
+    <string name="bible_gateway">Bible Gateway</string>
+    <string name="devotional_treasure">Devotional Treasure</string>
+    <string name="everyday_with_god">Everyday With God</string>
+    <string name="the_good_news_herald">The Good New Herald</string>
 </resources>
