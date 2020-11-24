@@ -2,19 +2,22 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
+    android:tint="#333333"
     android:viewportWidth="24"
-    android:viewportHeight="24"
-    android:tint="#333333">
-  <group android:scaleX="0.122737624"
-      android:scaleY="0.122737624"
-      android:translateX="1.4445642">
-    <group android:translateY="155.39062">
-      <path android:pathData="M67,-0L13,-0L13,-101L65,-101L65,-90L25,-90L25,-57L62,-57L62,-46L25,-46L25,-11L67,-11L67,-0Z"
-          android:fillColor="#000000"
-          android:fillAlpha="0.6"/>
-      <path android:pathData="M162,-6.65625Q146.8125,2,128.25,2Q106.65625,2,93.328125,-12.03125Q80,-26.0625,80,-49.15625Q80,-72.75,94.8125,-87.875Q109.625,-103,132.34375,-103Q148.8125,-103,160,-97L160,-84Q147.6875,-92,130.84375,-92Q113.796875,-92,102.890625,-80.3125Q92,-68.625,92,-50.046875Q92,-30.890625,102.09375,-19.9375Q112.1875,-9,129.46875,-9Q141.32812,-9,150,-13.46875L150,-42L128,-42L128,-53L162,-53L162,-6.65625Z"
-          android:fillColor="#000000"
-          android:fillAlpha="0.6"/>
+    android:viewportHeight="24">
+    <group
+        android:scaleX="0.122737624"
+        android:scaleY="0.122737624"
+        android:translateX="1.4445642">
+        <group android:translateY="155.39062">
+            <path
+                android:fillAlpha="0.6"
+                android:fillColor="#000000"
+                android:pathData="M67,-0L13,-0L13,-101L65,-101L65,-90L25,-90L25,-57L62,-57L62,-46L25,-46L25,-11L67,-11L67,-0Z" />
+            <path
+                android:fillAlpha="0.6"
+                android:fillColor="#000000"
+                android:pathData="M162,-6.65625Q146.8125,2,128.25,2Q106.65625,2,93.328125,-12.03125Q80,-26.0625,80,-49.15625Q80,-72.75,94.8125,-87.875Q109.625,-103,132.34375,-103Q148.8125,-103,160,-97L160,-84Q147.6875,-92,130.84375,-92Q113.796875,-92,102.890625,-80.3125Q92,-68.625,92,-50.046875Q92,-30.890625,102.09375,-19.9375Q112.1875,-9,129.46875,-9Q141.32812,-9,150,-13.46875L150,-42L128,-42L128,-53L162,-53L162,-6.65625Z" />
+        </group>
     </group>
-  </group>
 </vector>

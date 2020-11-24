@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jhesed.rbv.R;
 import com.jhesed.rbv.db.PrayerDbHelper;
+import com.jhesed.rbv.ui.SubFragmentRSSFeedContent;
 
 public class FragmentNews extends Fragment {
 
@@ -25,11 +26,11 @@ public class FragmentNews extends Fragment {
         this.db = new PrayerDbHelper(container.getContext());
         this.db.prepopulateData();
 
-        View root = inflater.inflate(R.layout.fragment_devotionals,
+        View root = inflater.inflate(R.layout.fragment_news,
                 container, false);
 
         BottomNavigationView bottomNavigationView =
-                root.findViewById(R.id.navigation_prayer_journal);
+                root.findViewById(R.id.navigation_news);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -40,24 +41,30 @@ public class FragmentNews extends Fragment {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.sub_nav_devotional1:
-                                selectedFragment = SubFragmentNewsContent
-                                        .newInstance("https://www.biblegateway.com/blog/feed/");
+                                selectedFragment = SubFragmentRSSFeedContent
+                                        .newInstance("https://christiannewsjournal.com/feed/",
+                                                "Christian News Journal", false);
                                 break;
                             case R.id.sub_nav_devotional2:
-                                selectedFragment = SubFragmentNewsContent
-                                        .newInstance("https://blog.truthforlife.org/rss.xml");
+                                selectedFragment = SubFragmentRSSFeedContent.newInstance(
+                                        "https://answersingenesis" +
+                                                ".org/feeds/answers-research-journal/",
+                                        "Answers In Genesis", false);
                                 break;
                             case R.id.sub_nav_devotional3:
-                                selectedFragment = SubFragmentNewsContent
-                                        .newInstance("https://www.crossway.org/articles/rss/");
+                                selectedFragment = SubFragmentRSSFeedContent
+                                        .newInstance("https://www.woh.org/feed/",
+                                                "Word of Hope", false);
                                 break;
                             case R.id.sub_nav_devotional4:
-                                selectedFragment = SubFragmentNewsContent
-                                        .newInstance("http://biblestudiesforlife.com/feed/");
+                                selectedFragment = SubFragmentRSSFeedContent
+                                        .newInstance("https://www.christianheadlines.com/rss/",
+                                                "Christian Headlines", false);
                                 break;
                             case R.id.sub_nav_devotional5:
-                                selectedFragment = SubFragmentNewsContent
-                                        .newInstance("http://biblestudiesforlife.com/feed/");
+                                selectedFragment = SubFragmentRSSFeedContent.newInstance(
+                                        "https://www.biblegateway.com/blog/feed/",
+                                        "Bible Gateway", false);
                                 break;
                         }
 
@@ -71,11 +78,14 @@ public class FragmentNews extends Fragment {
                     }
                 });
 
+        bottomNavigationView.setItemIconTintList(null);
+
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction =
                 getFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout,
-                SubFragmentNewsContent.newInstance("https://www.incourage.me/feed"));
+                SubFragmentRSSFeedContent
+                        .newInstance("https://wordpoints.com/feed/", "Word Points", false));
         transaction.addToBackStack(null);
         transaction.commit();
 

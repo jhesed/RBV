@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jhesed.rbv.R;
 import com.jhesed.rbv.db.PrayerDbHelper;
+import com.jhesed.rbv.ui.SubFragmentRSSFeedContent;
 
 public class FragmentDevotionals extends Fragment {
 
@@ -40,24 +41,29 @@ public class FragmentDevotionals extends Fragment {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.sub_nav_devotional1:
-                                selectedFragment = SubFragmentDevotionalsContent
-                                        .newInstance("https://wordpoints.com/feed/", "Word Points");
+                                selectedFragment = SubFragmentRSSFeedContent
+                                        .newInstance("https://wordpoints.com/feed/", "Word Points",
+                                                false);
                                 break;
                             case R.id.sub_nav_devotional2:
-                                selectedFragment = SubFragmentDevotionalsContent.newInstance(
-                                        "https://devotionaltreasure.wordpress.com/feed/", "Devotional Treasure");
+                                selectedFragment = SubFragmentRSSFeedContent.newInstance(
+                                        "https://devotionaltreasure.wordpress.com/feed/",
+                                        "Devotional Treasure", false);
                                 break;
                             case R.id.sub_nav_devotional3:
-                                selectedFragment = SubFragmentDevotionalsContent
-                                        .newInstance("https://everydaywithgod.com/feed/", "Everyday with God");
+                                selectedFragment = SubFragmentRSSFeedContent
+                                        .newInstance("https://ourdailybread.org/feed/",
+                                                "Our Daily Bread", true);
                                 break;
                             case R.id.sub_nav_devotional4:
-                                selectedFragment = SubFragmentDevotionalsContent
-                                        .newInstance("https://www.biblegateway.com/blog/feed/", "Bible Gateway");
+                                selectedFragment = SubFragmentRSSFeedContent.newInstance(
+                                        "https://thegoodnewsherald.wordpress.com/feed/",
+                                        "The Good News Herald", false);
                                 break;
                             case R.id.sub_nav_devotional5:
-                                selectedFragment = SubFragmentDevotionalsContent.newInstance(
-                                        "https://thegoodnewsherald.wordpress.com/feed/", "The Good News Herald");
+                                selectedFragment = SubFragmentRSSFeedContent
+                                        .newInstance("https://everydaywithgod.com/feed/",
+                                                "Everyday with God", false);
                                 break;
                         }
 
@@ -77,7 +83,8 @@ public class FragmentDevotionals extends Fragment {
         FragmentTransaction transaction =
                 getFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout,
-                SubFragmentDevotionalsContent.newInstance("https://wordpoints.com/feed/", "Word Points"));
+                SubFragmentRSSFeedContent
+                        .newInstance("https://wordpoints.com/feed/", "Word Points", false));
         transaction.addToBackStack(null);
         transaction.commit();
 

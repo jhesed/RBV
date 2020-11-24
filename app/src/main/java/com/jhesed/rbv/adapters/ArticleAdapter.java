@@ -18,15 +18,18 @@
 package com.jhesed.rbv.adapters;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,6 +39,8 @@ import com.jhesed.rbv.R;
 import com.prof.rssparser.Article;
 import com.squareup.picasso.Picasso;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -45,14 +50,17 @@ import java.util.Objects;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
 
+    private static boolean isDailyBread = false;
+    AlertDialog.Builder builder;
+    AlertDialog progressDialog;
     private List<Article> articles;
-
     private Context mContext;
     private WebView articleView;
 
-    public ArticleAdapter(List<Article> list, Context context) {
+    public ArticleAdapter(List<Article> list, Context context, boolean rssIsDailyBread) {
         this.articles = list;
         this.mContext = context;
+        isDailyBread = rssIsDailyBread;
     }
 
     public List<Article> getArticleList() {
@@ -61,7 +69,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ArticleAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.rss_feed, viewGroup, false);
         return new ViewHolder(v);
@@ -114,26 +122,38 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
         viewHolder.itemView.setOnClickListener(view -> {
 
+            String title = articles.get(viewHolder.getAdapterPosition()).getTitle();
+
             //show article content inside a dialog
             articleView = new WebView(mContext);
 
             articleView.getSettings().setLoadWithOverviewMode(true);
-
-            String title = articles.get(viewHolder.getAdapterPosition()).getTitle();
+            articleView.getSettings().setJavaScriptEnabled(true);
+            articleView.getSettings().setDomStorageEnabled(true);
+            articleView.setHorizontalScrollBarEnabled(false);
+            articleView.setWebViewClient(new WebViewClient());
             String content = articles.get(viewHolder.getAdapterPosition()).getContent();
 
-            articleView.getSettings().setJavaScriptEnabled(true);
-            articleView.setHorizontalScrollBarEnabled(false);
-            articleView.setWebChromeClient(new WebChromeClient());
-            articleView.loadDataWithBaseURL(null,
-                    "<style>img{display: inline; height: auto; max-width: 100%;} " +
+            String link = articles.get(viewHolder.getAdapterPosition()).getLink();
+            if (isDailyBread) {
+                try {
+                    URI uri = new URI(link);
+                    link = "https://odb.org" + uri.getPath();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+                articleView.loadUrl(link);
+            } else if (content == null || content.isEmpty()) {
+                articleView.loadUrl(link);
+            } else {
+                articleView.loadDataWithBaseURL(null,
+                        "<style>img{display: inline; height: auto; max-width: 100%;} " +
 
-                            "</style>\n" + "<style>iframe{ height: auto; width: auto;}" +
-                            "</style>\n" + content, null, "utf-8", null);
-
+                                "</style>\n" + "<style>iframe{ height: auto; width: auto;}" +
+                                "</style>\n" + content, null, "utf-8", null);
+            }
             androidx.appcompat.app.AlertDialog alertDialog =
                     new androidx.appcompat.app.AlertDialog.Builder(mContext).create();
-            alertDialog.setTitle(title);
             alertDialog.setView(articleView);
             alertDialog.setButton(androidx.appcompat.app.AlertDialog.BUTTON_NEUTRAL, "OK",
                     new DialogInterface.OnClickListener() {
@@ -146,6 +166,23 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
             ((TextView) Objects.requireNonNull(alertDialog.findViewById(android.R.id.message)))
                     .setMovementMethod(LinkMovementMethod.getInstance());
         });
+    }
+
+    public AlertDialog.Builder getDialogProgressBar() {
+
+        if (builder == null) {
+            builder = new AlertDialog.Builder(mContext);
+
+            builder.setTitle("Loading...");
+
+            final ProgressBar progressBar = new ProgressBar(mContext);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            progressBar.setLayoutParams(lp);
+            builder.setView(progressBar);
+        }
+        return builder;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.jhesed.rbv.ui.news;
+package com.jhesed.rbv.ui;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,7 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -24,37 +25,26 @@ import com.jhesed.rbv.R;
 import com.jhesed.rbv.adapters.ArticleAdapter;
 import com.jhesed.rbv.adapters.MainViewModel;
 
-public class SubFragmentNewsContent extends Fragment {
+public class SubFragmentRSSFeedContent extends Fragment {
 
-    // DEVOTIONALS:
-    // incourage
     private static String urlString;
+    private static String sourceTitle;
+    private static boolean isDailyBread = false;
+
     private RecyclerView mRecyclerView;
     private ArticleAdapter mAdapter;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private ProgressBar progressBar;
     private MainViewModel viewModel;
-    private RelativeLayout relativeLayout;
+    private ScrollView relativeLayout;
+    private TextView sourceTitleTextView;
 
-//    private String urlString = "https://www.incourage.me/feed";
-    // http://maxlucado.com/feed/custom
-
-    // A - Daily Bread
-//    private final static String urlString = "https://ourdailybread.org/feed/";
-    // A - Answers in Genesis
-//    private final static String urlString = "https://answersingenesis
-//    .org/feeds/blogs/all-speakers/";
-
-    // B - Voice of Martyr
-//    private final static String urlString = "https://www.vomcanada
-//    .com/News-Articles/?format=feed&type=rss";
-
-    // C - Christian Headlines
-//    private final static String urlString = "https://www.christianheadlines.com/rss";
-
-    public static SubFragmentNewsContent newInstance(String rssFeedUrl) {
+    public static SubFragmentRSSFeedContent newInstance(String rssFeedUrl, String rssSourceTitle,
+                                                        boolean rssIsDailyBread) {
         urlString = rssFeedUrl;
-        return new SubFragmentNewsContent();
+        sourceTitle = rssSourceTitle;
+        isDailyBread = rssIsDailyBread;
+        return new SubFragmentRSSFeedContent();
     }
 
     @Override
@@ -82,13 +72,15 @@ public class SubFragmentNewsContent extends Fragment {
         mRecyclerView.setHasFixedSize(true);
 
         relativeLayout = layout.findViewById(R.id.root_layout);
+        sourceTitleTextView = layout.findViewById(R.id.source_title);
+        sourceTitleTextView.setText(sourceTitle);
 
         viewModel.getChannel().observe(getViewLifecycleOwner(), channel -> {
             if (channel != null) {
                 if (channel.getTitle() != null) {
                     getActivity().setTitle(channel.getTitle());
                 }
-                mAdapter = new ArticleAdapter(channel.getArticles(), getContext());
+                mAdapter = new ArticleAdapter(channel.getArticles(), getContext(), isDailyBread);
                 mRecyclerView.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
                 progressBar.setVisibility(View.GONE);

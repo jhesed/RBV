@@ -12,14 +12,15 @@
         android:title="@string/devotional_treasure" />
     <item
         android:id="@+id/sub_nav_devotional3"
-        android:icon="@drawable/ic_devotionals_odb"
-        android:title="@string/our_daily_bread" />
-    <item
-        android:id="@+id/sub_nav_devotional4"
-        android:icon="@drawable/ic_devotionals_gh"
-        android:title="@string/the_good_news_herald" />
-    <item
-        android:id="@+id/sub_nav_devotional5"
         android:icon="@drawable/ic_devotionals_ewg"
         android:title="@string/everyday_with_god" />
+    <item
+        android:id="@+id/sub_nav_devotional4"
+        android:icon="@drawable/ic_devotionals_bg"
+        android:title="@string/bible_gateway" />
+
+    <item
+        android:id="@+id/sub_nav_devotional5"
+        android:icon="@drawable/ic_devotionals_gh"
+        android:title="@string/the_good_news_herald" />
 </menu>

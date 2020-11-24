@@ -2,19 +2,22 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
+    android:tint="#333333"
     android:viewportWidth="24"
-    android:viewportHeight="24"
-    android:tint="#333333">
-  <group android:scaleX="0.11940298"
-      android:scaleY="0.11940298"
-      android:translateY="0.32602626">
-    <group android:translateY="155.39062">
-      <path android:pathData="M89,-6.65625Q73.8125,2,55.25,2Q33.65625,2,20.328125,-12.03125Q7,-26.0625,7,-49.15625Q7,-72.75,21.8125,-87.875Q36.625,-103,59.34375,-103Q75.8125,-103,87,-97L87,-84Q74.6875,-92,57.84375,-92Q40.796875,-92,29.890625,-80.3125Q19,-68.625,19,-50.046875Q19,-30.890625,29.09375,-19.9375Q39.1875,-9,56.46875,-9Q68.328125,-9,77,-13.46875L77,-42L55,-42L55,-53L89,-53L89,-6.65625Z"
-          android:fillColor="#000000"
-          android:fillAlpha="0.6"/>
-      <path android:pathData="M188,0L176,0L176,-46L124,-46L124,0L112,0L112,-101L124,-101L124,-57L176,-57L176,-101L188,-101L188,0Z"
-          android:fillColor="#000000"
-          android:fillAlpha="0.6"/>
+    android:viewportHeight="24">
+    <group
+        android:scaleX="0.11940298"
+        android:scaleY="0.11940298"
+        android:translateY="0.32602626">
+        <group android:translateY="155.39062">
+            <path
+                android:fillAlpha="0.6"
+                android:fillColor="#000000"
+                android:pathData="M89,-6.65625Q73.8125,2,55.25,2Q33.65625,2,20.328125,-12.03125Q7,-26.0625,7,-49.15625Q7,-72.75,21.8125,-87.875Q36.625,-103,59.34375,-103Q75.8125,-103,87,-97L87,-84Q74.6875,-92,57.84375,-92Q40.796875,-92,29.890625,-80.3125Q19,-68.625,19,-50.046875Q19,-30.890625,29.09375,-19.9375Q39.1875,-9,56.46875,-9Q68.328125,-9,77,-13.46875L77,-42L55,-42L55,-53L89,-53L89,-6.65625Z" />
+            <path
+                android:fillAlpha="0.6"
+                android:fillColor="#000000"
+                android:pathData="M188,0L176,0L176,-46L124,-46L124,0L112,0L112,-101L124,-101L124,-57L176,-57L176,-101L188,-101L188,0Z" />
+        </group>
     </group>
-  </group>
 </vector>
