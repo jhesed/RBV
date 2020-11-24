@@ -154,6 +154,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
             }
             androidx.appcompat.app.AlertDialog alertDialog =
                     new androidx.appcompat.app.AlertDialog.Builder(mContext).create();
+            alertDialog.setTitle(title);
             alertDialog.setView(articleView);
             alertDialog.setButton(androidx.appcompat.app.AlertDialog.BUTTON_NEUTRAL, "OK",
                     new DialogInterface.OnClickListener() {

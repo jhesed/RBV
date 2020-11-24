@@ -53,8 +53,8 @@ public class FragmentNews extends Fragment {
                                 break;
                             case R.id.sub_nav_devotional3:
                                 selectedFragment = SubFragmentRSSFeedContent
-                                        .newInstance("https://www.woh.org/feed/",
-                                                "Word of Hope", false);
+                                        .newInstance("https://www.vomcanada.com/News-Articles/?format=feed&type=rss",
+                                                "Voice of Martyrs", false);
                                 break;
                             case R.id.sub_nav_devotional4:
                                 selectedFragment = SubFragmentRSSFeedContent
@@ -85,7 +85,7 @@ public class FragmentNews extends Fragment {
                 getFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout,
                 SubFragmentRSSFeedContent
-                        .newInstance("https://wordpoints.com/feed/", "Word Points", false));
+                        .newInstance("https://christiannewsjournal.com/feed/", "Christian News Journal", false));
         transaction.addToBackStack(null);
         transaction.commit();
 
