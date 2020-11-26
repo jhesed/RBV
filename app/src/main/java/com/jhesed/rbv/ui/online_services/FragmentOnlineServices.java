@@ -37,35 +37,37 @@ public class FragmentOnlineServices extends Fragment {
                             case R.id.sub_nav_devotional1:
                                 // JSOS
                                 selectedFragment = SubFragmentVideoFeedsContent
-                                        .newInstance("UCgJi0hyM78LM3pAYdTM2e8g");
+                                        .newInstance("UCgJi0hyM78LM3pAYdTM2e8g", "JSOS Church");
                                 break;
                         }
                         switch (item.getItemId()) {
                             case R.id.sub_nav_devotional2:
                                 // Elevation
                                 selectedFragment = SubFragmentVideoFeedsContent
-                                        .newInstance("UCIQqvZbHSwX0yKNVK1MyYjQ");
+                                        .newInstance("UCIQqvZbHSwX0yKNVK1MyYjQ",
+                                                "Elevation Church");
                                 break;
                         }
                         switch (item.getItemId()) {
                             case R.id.sub_nav_devotional3:
                                 // Transformation
                                 selectedFragment = SubFragmentVideoFeedsContent
-                                        .newInstance("UCYv-siSKd3Gn9IsliO95gIw");
+                                        .newInstance("UCYv-siSKd3Gn9IsliO95gIw",
+                                                "Transformation Church");
                                 break;
                         }
                         switch (item.getItemId()) {
                             case R.id.sub_nav_devotional4:
                                 // Passion Church
                                 selectedFragment = SubFragmentVideoFeedsContent
-                                        .newInstance("UCzT4tQfAZEsm_yMql_10dpg");
+                                        .newInstance("UCzT4tQfAZEsm_yMql_10dpg", "Passion Church");
                                 break;
                         }
                         switch (item.getItemId()) {
                             case R.id.sub_nav_devotional5:
                                 // Victory Estancia
                                 selectedFragment = SubFragmentVideoFeedsContent
-                                        .newInstance("UCf0C93fFPtf94s4z9uYxO3Q");
+                                        .newInstance("UCf0C93fFPtf94s4z9uYxO3Q", "Victory Church");
                                 break;
                         }
 
@@ -87,7 +89,7 @@ public class FragmentOnlineServices extends Fragment {
                 getFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout,
                 SubFragmentVideoFeedsContent
-                        .newInstance("UCgJi0hyM78LM3pAYdTM2e8g"));
+                        .newInstance("UCgJi0hyM78LM3pAYdTM2e8g", "JSOS Church"));
         transaction.addToBackStack(null);
         transaction.commit();
 

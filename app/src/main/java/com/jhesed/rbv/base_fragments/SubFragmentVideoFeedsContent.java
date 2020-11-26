@@ -9,9 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.jhesed.rbv.R;
 import com.jhesed.rbv.adapters.RSSVideoViewModel;
@@ -35,18 +34,21 @@ import java.util.List;
 public class SubFragmentVideoFeedsContent extends Fragment {
 
     private static String channelId;
+    private static String channelTitle;
 
     private RecyclerView mRecyclerView;
     private VideoAdapter mAdapter;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private ProgressBar progressBar;
     private RSSVideoViewModel viewModel;
-    private RelativeLayout relativeLayout;
-    private FloatingActionButton mFab;
+    private ScrollView relativeLayout;
+    private TextView sourceTitleTextView;
 
 
-    public static SubFragmentVideoFeedsContent newInstance(String rssChannelId) {
+    public static SubFragmentVideoFeedsContent newInstance(String rssChannelId,
+                                                           String rssChannelTitle) {
         channelId = rssChannelId;
+        channelTitle = rssChannelTitle;
         return new SubFragmentVideoFeedsContent();
     }
 
@@ -69,7 +71,6 @@ public class SubFragmentVideoFeedsContent extends Fragment {
         viewModel.setChannelId(channelId);
 
         progressBar = layout.findViewById(R.id.progressBar);
-        mFab = layout.findViewById(R.id.fab);
 
         mRecyclerView = layout.findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -77,6 +78,9 @@ public class SubFragmentVideoFeedsContent extends Fragment {
         mRecyclerView.setHasFixedSize(true);
 
         relativeLayout = layout.findViewById(R.id.root_layout);
+        sourceTitleTextView = layout.findViewById(R.id.source_title);
+        sourceTitleTextView.setText(channelTitle);
+
 
         mAdapter = new VideoAdapter(new ArrayList<Video>(), this);
         mRecyclerView.setAdapter(mAdapter);
@@ -126,35 +130,6 @@ public class SubFragmentVideoFeedsContent extends Fragment {
                             });
                     dialogBuilder.show();
                 }
-            }
-        });
-
-        //show the fab on the bottom of recycler view
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-
-                LinearLayoutManager layoutManager =
-                        (LinearLayoutManager) recyclerView.getLayoutManager();
-                int lastVisible = 0;
-                if (layoutManager != null) {
-                    lastVisible = layoutManager.findLastVisibleItemPosition();
-                }
-
-                if (lastVisible == mAdapter.getItemCount() - 1) {
-                    mFab.show();
-                } else {
-                    mFab.hide();
-                }
-                super.onScrolled(recyclerView, dx, dy);
-            }
-        });
-
-        mFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mFab.hide();
-                viewModel.fetchNextVideos();
             }
         });
 
