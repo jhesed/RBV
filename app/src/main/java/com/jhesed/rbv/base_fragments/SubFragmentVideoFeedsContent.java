@@ -34,8 +34,7 @@ import java.util.List;
 
 public class SubFragmentVideoFeedsContent extends Fragment {
 
-    private static String urlString;
-    private static String sourceTitle;
+    private static String channelId;
 
     private RecyclerView mRecyclerView;
     private VideoAdapter mAdapter;
@@ -46,10 +45,8 @@ public class SubFragmentVideoFeedsContent extends Fragment {
     private FloatingActionButton mFab;
 
 
-    public static SubFragmentVideoFeedsContent newInstance(String rssFeedUrl,
-                                                           String rssSourceTitle) {
-        urlString = rssFeedUrl;
-        sourceTitle = rssSourceTitle;
+    public static SubFragmentVideoFeedsContent newInstance(String rssChannelId) {
+        channelId = rssChannelId;
         return new SubFragmentVideoFeedsContent();
     }
 
@@ -69,6 +66,7 @@ public class SubFragmentVideoFeedsContent extends Fragment {
                         container, false);
 
         viewModel = new ViewModelProvider(this).get(RSSVideoViewModel.class);
+        viewModel.setChannelId(channelId);
 
         progressBar = layout.findViewById(R.id.progressBar);
         mFab = layout.findViewById(R.id.fab);

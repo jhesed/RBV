@@ -43,5 +43,4 @@ dependencies {
     compile 'com.prof.youtubeparser:youtubeparser:3.0.1'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation "com.squareup.okhttp3:okhttp:3.14.9"
-    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 }

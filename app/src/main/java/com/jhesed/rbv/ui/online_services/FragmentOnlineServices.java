@@ -35,11 +35,40 @@ public class FragmentOnlineServices extends Fragment {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.sub_nav_devotional1:
+                                // JSOS
                                 selectedFragment = SubFragmentVideoFeedsContent
-                                        .newInstance("https://christiannewsjournal.com/feed/",
-                                                "Christian News Journal");
+                                        .newInstance("UCgJi0hyM78LM3pAYdTM2e8g");
                                 break;
                         }
+                        switch (item.getItemId()) {
+                            case R.id.sub_nav_devotional2:
+                                // Elevation
+                                selectedFragment = SubFragmentVideoFeedsContent
+                                        .newInstance("UCIQqvZbHSwX0yKNVK1MyYjQ");
+                                break;
+                        }
+                        switch (item.getItemId()) {
+                            case R.id.sub_nav_devotional3:
+                                // Transformation
+                                selectedFragment = SubFragmentVideoFeedsContent
+                                        .newInstance("UCYv-siSKd3Gn9IsliO95gIw");
+                                break;
+                        }
+                        switch (item.getItemId()) {
+                            case R.id.sub_nav_devotional4:
+                                // Passion Church
+                                selectedFragment = SubFragmentVideoFeedsContent
+                                        .newInstance("UCzT4tQfAZEsm_yMql_10dpg");
+                                break;
+                        }
+                        switch (item.getItemId()) {
+                            case R.id.sub_nav_devotional5:
+                                // Victory Estancia
+                                selectedFragment = SubFragmentVideoFeedsContent
+                                        .newInstance("UCf0C93fFPtf94s4z9uYxO3Q");
+                                break;
+                        }
+
 
                         FragmentTransaction transaction =
                                 getFragmentManager().beginTransaction();
@@ -58,8 +87,7 @@ public class FragmentOnlineServices extends Fragment {
                 getFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout,
                 SubFragmentVideoFeedsContent
-                        .newInstance("https://christiannewsjournal.com/feed/",
-                                "Christian News Journal"));
+                        .newInstance("UCgJi0hyM78LM3pAYdTM2e8g"));
         transaction.addToBackStack(null);
         transaction.commit();
 

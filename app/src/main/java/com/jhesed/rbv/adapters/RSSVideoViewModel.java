@@ -16,7 +16,7 @@ import java.util.List;
 
 public class RSSVideoViewModel extends ViewModel {
 
-    private final String CHANNEL_ID = "UCgJi0hyM78LM3pAYdTM2e8g";
+    private static String CHANNEL_ID;
     private MutableLiveData<List<Video>> mVideoLiveList = new MutableLiveData<>();
     private MutableLiveData<String> mSnackbar = new MutableLiveData<>();
     private MutableLiveData<Statistics> mLiveStats = new MutableLiveData<>();
@@ -30,6 +30,10 @@ public class RSSVideoViewModel extends ViewModel {
 
     private void setVideoLiveList(List<Video> videoList) {
         this.mVideoLiveList.postValue(videoList);
+    }
+
+    public void setChannelId(String channelId) {
+        CHANNEL_ID = channelId;
     }
 
     public MutableLiveData<String> getSnackbar() {

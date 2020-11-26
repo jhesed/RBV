@@ -4,23 +4,22 @@
 
     <item
         android:id="@+id/sub_nav_devotional1"
-        android:icon="@drawable/ic_news_cj"
-        android:title="@string/christian_news_journal" />
+        android:icon="@drawable/ic_services_jsos"
+        android:title="@string/jsos" />
     <item
         android:id="@+id/sub_nav_devotional2"
-        android:icon="@drawable/ic_news_ag"
-        android:title="@string/answers_in_genesis" />
+        android:icon="@drawable/ic_services_elevation"
+        android:title="@string/elevation" />
     <item
         android:id="@+id/sub_nav_devotional3"
-        android:icon="@drawable/ic_news_vm"
-        android:title="@string/voice_of_martyrs" />
+        android:icon="@drawable/ic_services_transformation"
+        android:title="@string/transformation" />
     <item
         android:id="@+id/sub_nav_devotional4"
-        android:icon="@drawable/ic_news_ch"
-        android:title="@string/christian_headlines" />
-
+        android:icon="@drawable/ic_services_passion"
+        android:title="@string/passion" />
     <item
         android:id="@+id/sub_nav_devotional5"
-        android:icon="@drawable/ic_devotionals_bg"
-        android:title="@string/bible_gateway" />
+        android:icon="@drawable/ic_services_victory"
+        android:title="@string/victory" />
 </menu>
