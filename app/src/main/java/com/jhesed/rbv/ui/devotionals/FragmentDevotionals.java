@@ -12,19 +12,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jhesed.rbv.R;
-import com.jhesed.rbv.db.PrayerDbHelper;
-import com.jhesed.rbv.ui.SubFragmentRSSFeedContent;
+import com.jhesed.rbv.base_fragments.SubFragmentRSSFeedContent;
 
 public class FragmentDevotionals extends Fragment {
-
-    PrayerDbHelper db;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        this.db = new PrayerDbHelper(container.getContext());
-        this.db.prepopulateData();
 
         View root = inflater.inflate(R.layout.fragment_devotionals,
                 container, false);

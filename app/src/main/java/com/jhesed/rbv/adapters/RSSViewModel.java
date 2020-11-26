@@ -28,7 +28,7 @@ import com.prof.rssparser.Parser;
 
 import java.util.ArrayList;
 
-public class MainViewModel extends ViewModel {
+public class RSSViewModel extends ViewModel {
 
     private MutableLiveData<Channel> articleListLive = null;
 

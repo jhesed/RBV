@@ -1,4 +1,4 @@
-package com.jhesed.rbv.ui;
+package com.jhesed.rbv.base_fragments;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,7 +23,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.android.material.snackbar.Snackbar;
 import com.jhesed.rbv.R;
 import com.jhesed.rbv.adapters.ArticleAdapter;
-import com.jhesed.rbv.adapters.MainViewModel;
+import com.jhesed.rbv.adapters.RSSViewModel;
 
 public class SubFragmentRSSFeedContent extends Fragment {
 
@@ -35,7 +35,7 @@ public class SubFragmentRSSFeedContent extends Fragment {
     private ArticleAdapter mAdapter;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private ProgressBar progressBar;
-    private MainViewModel viewModel;
+    private RSSViewModel viewModel;
     private ScrollView relativeLayout;
     private TextView sourceTitleTextView;
 
@@ -62,7 +62,7 @@ public class SubFragmentRSSFeedContent extends Fragment {
                         R.layout.sub_fragment_devotionals,
                         container, false);
 
-        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        viewModel = new ViewModelProvider(this).get(RSSViewModel.class);
 
         progressBar = layout.findViewById(R.id.progressBar);
 

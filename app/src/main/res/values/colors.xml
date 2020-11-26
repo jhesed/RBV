@@ -9,4 +9,5 @@
     <color name="colorBackground">#107896</color>
     <color name="colorBackgroundLighter">#1078</color>
     <color name="colorAlert">#b22222</color>
+    <color name="photo_tint">#38101010</color>
 </resources>

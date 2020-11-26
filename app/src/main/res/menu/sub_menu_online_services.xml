@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/sub_nav_devotional1"
+        android:icon="@drawable/ic_news_cj"
+        android:title="@string/christian_news_journal" />
+    <item
+        android:id="@+id/sub_nav_devotional2"
+        android:icon="@drawable/ic_news_ag"
+        android:title="@string/answers_in_genesis" />
+    <item
+        android:id="@+id/sub_nav_devotional3"
+        android:icon="@drawable/ic_news_vm"
+        android:title="@string/voice_of_martyrs" />
+    <item
+        android:id="@+id/sub_nav_devotional4"
+        android:icon="@drawable/ic_news_ch"
+        android:title="@string/christian_headlines" />
+
+    <item
+        android:id="@+id/sub_nav_devotional5"
+        android:icon="@drawable/ic_devotionals_bg"
+        android:title="@string/bible_gateway" />
+</menu>

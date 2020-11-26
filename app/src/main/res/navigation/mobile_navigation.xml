@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_prayer_journal" />
 
     <fragment
+        android:id="@+id/nav_online_service"
+        android:name="com.jhesed.rbv.ui.online_services.FragmentOnlineServices"
+        android:label="@string/online_service"
+        tools:layout="@layout/sub_fragment_online_service" />
+
+    <fragment
         android:id="@+id/nav_devotionals"
         android:name="com.jhesed.rbv.ui.devotionals.FragmentDevotionals"
         android:label="@string/devotionals"
