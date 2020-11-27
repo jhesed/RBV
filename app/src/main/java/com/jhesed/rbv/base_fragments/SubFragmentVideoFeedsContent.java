@@ -31,6 +31,8 @@ import com.prof.youtubeparser.models.videos.Video;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.view.View.GONE;
+
 public class SubFragmentVideoFeedsContent extends Fragment {
 
     private static String channelId;
@@ -147,25 +149,13 @@ public class SubFragmentVideoFeedsContent extends Fragment {
             }
         });
 
+        final TextView errorMessage = layout.findViewById(R.id.error_message);
         if (!isNetworkAvailable()) {
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setMessage(R.string.alert_message)
-                    .setTitle(R.string.alert_title)
-                    .setCancelable(false)
-                    .setPositiveButton(R.string.alert_positive,
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog,
-                                                    int id) {
-                                    getActivity().finish();
-                                }
-                            });
-
-            AlertDialog alert = builder.create();
-            alert.show();
-
-        } else if (isNetworkAvailable()) {
+            progressBar.setVisibility(GONE);
+            errorMessage.setVisibility(View.VISIBLE);
+        }
+        else if (isNetworkAvailable()) {
+            errorMessage.setVisibility(GONE);
             viewModel.fetchVideos();
         }
         return layout;

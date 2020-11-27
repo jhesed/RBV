@@ -25,6 +25,8 @@ import com.jhesed.rbv.R;
 import com.jhesed.rbv.adapters.ArticleAdapter;
 import com.jhesed.rbv.adapters.RSSViewModel;
 
+import static android.view.View.GONE;
+
 public class SubFragmentRSSFeedContent extends Fragment {
 
     private static String urlString;
@@ -83,7 +85,7 @@ public class SubFragmentRSSFeedContent extends Fragment {
                 mAdapter = new ArticleAdapter(channel.getArticles(), getContext(), isDailyBread);
                 mRecyclerView.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
-                progressBar.setVisibility(View.GONE);
+                progressBar.setVisibility(GONE);
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -105,24 +107,12 @@ public class SubFragmentRSSFeedContent extends Fragment {
             viewModel.fetchFeed(urlString);
         });
 
+        final TextView errorMessage = layout.findViewById(R.id.error_message);
         if (!isNetworkAvailable()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setMessage(R.string.alert_message)
-                    .setTitle(R.string.alert_title)
-                    .setCancelable(false)
-                    .setPositiveButton(R.string.alert_positive,
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog,
-                                                    int id) {
-                                    getActivity().finish();
-                                }
-                            });
-
-            AlertDialog alert = builder.create();
-            alert.show();
-
+            progressBar.setVisibility(GONE);
+            errorMessage.setVisibility(View.VISIBLE);
         } else if (isNetworkAvailable()) {
+            errorMessage.setVisibility(GONE);
             viewModel.fetchFeed(urlString);
         }
         return layout;

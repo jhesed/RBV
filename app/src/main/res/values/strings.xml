@@ -95,4 +95,5 @@
     <string name="elevation">Elevation</string>
     <string name="transformation">Transformation</string>
     <string name="passion">Passion</string>
+    <string name="check_network">Please check your internet connection.</string>
 </resources>
