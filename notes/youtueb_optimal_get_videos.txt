@@ -1,0 +1,349 @@
+====================================
+STEP: 1. Get Channel Playlist:
+
+REQUEST:
+    GET https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&channelId=UCgJi0hyM78LM3pAYdTM2e8g&maxResults=2&key=[YOUR_API_KEY] HTTP/1.1
+
+    Authorization: Bearer [YOUR_ACCESS_TOKEN]
+    Accept: application/json
+
+
+RESPONSE:
+    {
+      "kind": "youtube#playlistListResponse",
+      "etag": "2BgbJmkKJXF6lsXWGujO_m1CI-c",
+      "nextPageToken": "CAIQAA",
+      "pageInfo": {
+        "totalResults": 11,
+        "resultsPerPage": 2
+      },
+      "items": [
+        {
+          "kind": "youtube#playlist",
+          "etag": "1XMzg95S9T0Wk4tErGl9hdbccGg",
+          "id": "PL_S2AoNGdiXdGLeYw697d0ORPmHF533V3",
+          "snippet": {
+            "publishedAt": "2020-10-11T06:12:48Z",
+            "channelId": "UCgJi0hyM78LM3pAYdTM2e8g",
+            "title": "JESUS SERIES",
+            "description": "This series focuses on the JSOS CC Statement No. 3 about the lordship of our Lord Jesus Christ",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/7KtmRODID8k/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/7KtmRODID8k/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/7KtmRODID8k/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              },
+              "standard": {
+                "url": "https://i.ytimg.com/vi/7KtmRODID8k/sddefault.jpg",
+                "width": 640,
+                "height": 480
+              },
+              "maxres": {
+                "url": "https://i.ytimg.com/vi/7KtmRODID8k/maxresdefault.jpg",
+                "width": 1280,
+                "height": 720
+              }
+            },
+            "channelTitle": "JSOS Kapamuso",
+            "localized": {
+              "title": "JESUS SERIES",
+              "description": "This series focuses on the JSOS CC Statement No. 3 about the lordship of our Lord Jesus Christ"
+            }
+          },
+          "contentDetails": {
+            "itemCount": 3
+          }
+        },
+        {
+          "kind": "youtube#playlist",
+          "etag": "YMJ5m7iUp3irRS8hl_tdcdXYzwU",
+          "id": "PL_S2AoNGdiXfLmxuNBzNWAzVO3yoNSxyT",
+          "snippet": {
+            "publishedAt": "2020-09-13T11:58:32Z",
+            "channelId": "UCgJi0hyM78LM3pAYdTM2e8g",
+            "title": "ONLINE NIGHT PRAISE 2020",
+            "description": "Night Praise is 8 consecutive days of praising and giving thanks to God every night. This program is part of the 8 by 4 Anniversary offering of the JSOS CC.\n8 by 4 means four offerings for 8 days. Other offering includes fasting, synchronized prayer and dawn watch. These offerings have two phases. The first phase begins from Aug 1 to 8 and the second one from Aug 24 to 31. These videos are part of the second phase of the night praise 2020.",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/XCspwNBPd44/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/XCspwNBPd44/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/XCspwNBPd44/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              },
+              "standard": {
+                "url": "https://i.ytimg.com/vi/XCspwNBPd44/sddefault.jpg",
+                "width": 640,
+                "height": 480
+              }
+            },
+            "channelTitle": "JSOS Kapamuso",
+            "localized": {
+              "title": "ONLINE NIGHT PRAISE 2020",
+              "description": "Night Praise is 8 consecutive days of praising and giving thanks to God every night. This program is part of the 8 by 4 Anniversary offering of the JSOS CC.\n8 by 4 means four offerings for 8 days. Other offering includes fasting, synchronized prayer and dawn watch. These offerings have two phases. The first phase begins from Aug 1 to 8 and the second one from Aug 24 to 31. These videos are part of the second phase of the night praise 2020."
+            }
+          },
+          "contentDetails": {
+            "itemCount": 8
+          }
+        }
+      ]
+    }
+
+
+STEP 2: Retrieve Playlist Videos
+
+REQUEST:
+    GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLFrHDxoEf4t3R-eVb4dVvHsOMKV93pb68&key=[YOUR_API_KEY] HTTP/1.1
+
+    Authorization: Bearer [YOUR_ACCESS_TOKEN]
+    Accept: application/json
+
+RESPONSE:
+    {
+      "kind": "youtube#playlistItemListResponse",
+      "etag": "sgWKdV7F4TIoMNMSfSjbyDVKyfI",
+      "nextPageToken": "CAUQAA",
+      "items": [
+        {
+          "kind": "youtube#playlistItem",
+          "etag": "63i1wqpY6sC5Q4Wk756qjYL8adA",
+          "id": "UExGckhEeG9FZjR0M1ItZVZiNGRWdkhzT01LVjkzcGI2OC40M0Y4MEVDM0MxRTYxRERE",
+          "snippet": {
+            "publishedAt": "2020-11-23T01:03:06Z",
+            "channelId": "UCIQqvZbHSwX0yKNVK1MyYjQ",
+            "title": "Private video",
+            "description": "This video is private.",
+            "thumbnails": {},
+            "channelTitle": "Elevation Church",
+            "playlistId": "PLFrHDxoEf4t3R-eVb4dVvHsOMKV93pb68",
+            "position": 0,
+            "resourceId": {
+              "kind": "youtube#video",
+              "videoId": "CXQJfiy_y-M"
+            }
+          },
+          "contentDetails": {
+            "videoId": "CXQJfiy_y-M"
+          }
+        },
+        {
+          "kind": "youtube#playlistItem",
+          "etag": "Voqc4TsCwdQlZ-7ipBlbjYJ31D8",
+          "id": "UExGckhEeG9FZjR0M1ItZVZiNGRWdkhzT01LVjkzcGI2OC5FRkIzNkJFQkQ3RkUwOUY5",
+          "snippet": {
+            "publishedAt": "2020-11-15T21:58:13Z",
+            "channelId": "UCIQqvZbHSwX0yKNVK1MyYjQ",
+            "title": "Wasted Rain | Pastor Steven Furtick | Elevation Church",
+            "description": "God is trying to speak something into your life. \n\nIn “Wasted Rain,” Pastor Steven Furtick of Elevation Church teaches that God often speaks to us in stormy seasons — we just have to be willing to listen. \n\n#elevationchurch #stevenfurtick #wastedrain #purpose #godsword #2020sermon #onlinechurch #churchonline \n\nSubscribe to receive our latest messages: http://ele.vc/jeetED\n\nTo support this ministry and help us continue to reach people all around the world click here: http://elevationchurch.org/giving/\n\nSee what God can do through you. This is the vision of Elevation Church, led by Pastor Steven Furtick and based in Charlotte, NC with multiple locations throughout the US and Canada.\n\n——\nStay Connected\n\nWebsite: http://ele.vc/9pHOrc\nElevation Church Facebook: http://ele.vc/b9YVgW\nElevation Church Instagram: http://ele.vc/PQo0M3\nElevation Church Twitter: http://ele.vc/Andpt7\nSteven Furtick YouTube: http://ele.vc/tn2sxe\nSteven Furtick Facebook: http://ele.vc/5Fb3qR\nSteven Furtick Instagram: http://ele.vc/kLuTvj\nSteven Furtick Twitter: http://ele.vc/Uu9DZp\n\nSection Titles:\n0:00 - The Year Of The Lord's Favor\n4:09 - Wasted Rain (Isaiah 55, verses 8-11)\n7:18 - God, Make Up The Difference\n9:24 - The Context of Revival (Isaiah 55, verses 6-10)\n11:33 - God's Word Doesn't Override Your Thoughts\n15:13 - Are You Wasting The Rain?\n18:24 - This Is Why You're Discouraged\n20:09 - What The Bible Says About God's Word \n24:55 - When It's Inconvenient \n27:44 - God Is Always Speaking To You \n29:12 - Are You Watering The Wrong Thoughts? (Isaiah 55, verses 10-11)\n31:28 - Every Word God Speaks Has A Purpose\n34:45 - Will You Respond?\n38:25 - Are You So Full You Can't Receive From God?\n40:30 - Have You Been Wasting The Word? \n42:49 - A Different Type of Rain (Matthew 7, verses 24-25\n45:30 - God Is Revealing Things In Your Life\n49:42 - Are You Building On The Wrong Foundation? (Matthew 7, verses 26-27)\n52:05 - Stop Putting The Wrong Thing On The Throne\n55:36 - Don't Run From The Rain (James 5, verses 17-18)\n57:57 - I'm Not Running From What I Prayed For\n1:00:00 - God, We Receive Your Rain \n1:06:50 - Will You Receive It?\n\nWasted Rain | Pastor Steven Furtick | Elevation Church",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/gALk3cWyP1w/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/gALk3cWyP1w/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/gALk3cWyP1w/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              },
+              "standard": {
+                "url": "https://i.ytimg.com/vi/gALk3cWyP1w/sddefault.jpg",
+                "width": 640,
+                "height": 480
+              },
+              "maxres": {
+                "url": "https://i.ytimg.com/vi/gALk3cWyP1w/maxresdefault.jpg",
+                "width": 1280,
+                "height": 720
+              }
+            },
+            "channelTitle": "Elevation Church",
+            "playlistId": "PLFrHDxoEf4t3R-eVb4dVvHsOMKV93pb68",
+            "position": 1,
+            "resourceId": {
+              "kind": "youtube#video",
+              "videoId": "gALk3cWyP1w"
+            }
+          },
+          "contentDetails": {
+            "videoId": "gALk3cWyP1w",
+            "videoPublishedAt": "2020-11-16T01:00:03Z"
+          }
+        },
+        {
+          "kind": "youtube#playlistItem",
+          "etag": "4mfeYCXzZxApnum9oH8FdcBCDQw",
+          "id": "UExGckhEeG9FZjR0M1ItZVZiNGRWdkhzT01LVjkzcGI2OC4yQjdDRUQyQ0M0MEZCQkEx",
+          "snippet": {
+            "publishedAt": "2020-11-09T00:04:45Z",
+            "channelId": "UCIQqvZbHSwX0yKNVK1MyYjQ",
+            "title": "Use Your Inside Voice | Pastor Steven Furtick | Elevation Church",
+            "description": "Whose voice have you been listening to?\n\nIn “Use Your Inside Voice,” Pastor Steven Furtick of Elevation Church shows us that Jesus was not driven by the opinions of others, but led by the voice of God. It is ultimately up to us to determine which voice we respond to. \n\n#elevationchurch #stevenfurtick #useyourinsidevoice #identity #internalvoices #2020sermon #onlinechurch #churchonline \n\nSubscribe to receive our latest messages: http://ele.vc/jeetED\n\nTo support this ministry and help us continue to reach people all around the world click here: http://elevationchurch.org/giving/\n\nSee what God can do through you. This is the vision of Elevation Church, led by Pastor Steven Furtick and based in Charlotte, NC with multiple locations throughout the US and Canada.\n\n——\nStay Connected\n\nWebsite: http://ele.vc/9pHOrc\nElevation Church Facebook: http://ele.vc/b9YVgW\nElevation Church Instagram: http://ele.vc/PQo0M3\nElevation Church Twitter: http://ele.vc/Andpt7\nSteven Furtick YouTube: http://ele.vc/tn2sxe\nSteven Furtick Facebook: http://ele.vc/5Fb3qR\nSteven Furtick Instagram: http://ele.vc/kLuTvj\nSteven Furtick Twitter: http://ele.vc/Uu9DZp\n\nSection Titles:\n0:00 - A Real Glimpse of Jesus (Mark 3, verses 20-31)\n4:38 - Use Your Inside Voice\n6:18 - What's Your Inside Voice Like?\n8:27 - Jesus Wants To Deliver You From Cynicism\n10:55 - Has Cynicism Become Your Strategy?\n12:50 - The Danger Of The Crowd\n14:04 - When Knowledge Blocks Wisdom\n16:40 - He Knows Your Thoughts (Matthew 12, verse 25)\n19:05 - Quit Blaming The Devil For Everything\n20:45 - Cynicism Is Counterfeit Wisdom\n23:23 - Deal With It\n24:51 - It Happens On The Inside\n26:25 - The Secret To Doing The Will of God (Mark 3, verse 23)\n29:00 - Jesus Knew Who He Was. Do You?\n31:11 - You Are From God (1 John 4, verse 4)\n34:55 - You've Got To Talk To Yourself Better\n36:57 - Voices Become Viewpoints (1 John 4, verse 5)\n39:17 - Talk Like Where You Come From (1 John 4, verse 6)\n41:10 - The Internal Authority of Jesus (Mark 3, verse 28)\n44:18 - Saying Amen From Within\n46:20 - Dealing With Our Inside Voice\n49:28 - God, Help Us To Hear You\n50:58 - He Is Within You (John 11, verses 33-43)\n56:04 - Do You Know It On The Inside?\n\nUse Your Inside Voice | Pastor Steven Furtick | Elevation Church",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/YfaApD1OLak/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/YfaApD1OLak/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/YfaApD1OLak/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              },
+              "standard": {
+                "url": "https://i.ytimg.com/vi/YfaApD1OLak/sddefault.jpg",
+                "width": 640,
+                "height": 480
+              },
+              "maxres": {
+                "url": "https://i.ytimg.com/vi/YfaApD1OLak/maxresdefault.jpg",
+                "width": 1280,
+                "height": 720
+              }
+            },
+            "channelTitle": "Elevation Church",
+            "playlistId": "PLFrHDxoEf4t3R-eVb4dVvHsOMKV93pb68",
+            "position": 2,
+            "resourceId": {
+              "kind": "youtube#video",
+              "videoId": "YfaApD1OLak"
+            }
+          },
+          "contentDetails": {
+            "videoId": "YfaApD1OLak",
+            "videoPublishedAt": "2020-11-09T01:00:09Z"
+          }
+        },
+        {
+          "kind": "youtube#playlistItem",
+          "etag": "MPUGADWbbGGe3Pn75O-KWmJ9pN8",
+          "id": "UExGckhEeG9FZjR0M1ItZVZiNGRWdkhzT01LVjkzcGI2OC4xM0YyQUYxQTg5OTgyQ0Y5",
+          "snippet": {
+            "publishedAt": "2020-11-01T21:31:14Z",
+            "channelId": "UCIQqvZbHSwX0yKNVK1MyYjQ",
+            "title": "I See It Now | Pastor Dharius Daniels | Elevation Church",
+            "description": "How do we begin to make sense of our hurts, heartbreaks, and setbacks?\n\nIn “I See It Now,” Pastor Dharius Daniels of Change Church shows us that even when we don’t understand why we’re going through something, God is still at work.\n\n#elevationchurch #dhariusdaniels #iseeitnow #perspective #clarity #2020sermon #onlinechurch #churchonline \n\nSubscribe to receive our latest messages: http://ele.vc/jeetED\n\nTo support this ministry and help us continue to reach people all around the world click here: http://elevationchurch.org/giving/\n\nSee what God can do through you. This is the vision of Elevation Church, led by Pastor Steven Furtick and based in Charlotte, NC with multiple locations throughout the US and Canada.\n\n——\nStay Connected\n\nWebsite: http://ele.vc/9pHOrc\nElevation Church Facebook: http://ele.vc/b9YVgW\nElevation Church Instagram: http://ele.vc/PQo0M3\nElevation Church Twitter: http://ele.vc/Andpt7\nSteven Furtick YouTube: http://ele.vc/tn2sxe\nSteven Furtick Facebook: http://ele.vc/5Fb3qR\nSteven Furtick Instagram: http://ele.vc/kLuTvj\nSteven Furtick Twitter: http://ele.vc/Uu9DZp\n\nSection Titles:\n0:00 - When God Asks Us A Question (Job 42, verses 1-5)\n2:06 - It Doesn't Make Sense... Yet\n4:38 - This Determines What You See\n6:40 - Have You Been In A Season of Ambiguity?\n8:53 - Why God Hasn't Given You An Answer Yet\n10:54 - The Anxiety of Ambiguity\n12:28 - God Sees It Differently Than You (John 11, verse 11)\n14:46 - But I Did Everything Right... (Job 1, verse 1)\n18:03 - God Has Been Protecting You (Job 1, verses 9-10)\n22:24 - The Enemy Is Trying To Wear You Down\n25:10 - Why The Devil Keeps Coming After You\n26:50 - Stress And Pressure Will Make You Say Things\n28:41 - That's Not What I Want To Hear\n31:01 - When God Speaks (Job 38, verses 3-7)\n33:37 - What God Wants You To See\n35:40 - How To Live In Uncertainty (Job 42, verses 1-5)\n38:00 - I See It Now (Psalm 8, verse 2)\n\nI See It Now | Dharius Daniels | Elevation Church",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/ZMMVkbUu8Vs/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/ZMMVkbUu8Vs/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/ZMMVkbUu8Vs/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              },
+              "standard": {
+                "url": "https://i.ytimg.com/vi/ZMMVkbUu8Vs/sddefault.jpg",
+                "width": 640,
+                "height": 480
+              },
+              "maxres": {
+                "url": "https://i.ytimg.com/vi/ZMMVkbUu8Vs/maxresdefault.jpg",
+                "width": 1280,
+                "height": 720
+              }
+            },
+            "channelTitle": "Elevation Church",
+            "playlistId": "PLFrHDxoEf4t3R-eVb4dVvHsOMKV93pb68",
+            "position": 3,
+            "resourceId": {
+              "kind": "youtube#video",
+              "videoId": "ZMMVkbUu8Vs"
+            }
+          },
+          "contentDetails": {
+            "videoId": "ZMMVkbUu8Vs",
+            "videoPublishedAt": "2020-11-02T01:00:09Z"
+          }
+        },
+        {
+          "kind": "youtube#playlistItem",
+          "etag": "yyJV1B8uizr0SKFdFxfDPAlwbBc",
+          "id": "UExGckhEeG9FZjR0M1ItZVZiNGRWdkhzT01LVjkzcGI2OC4xNkVFQkQwQzlCOTczN0FG",
+          "snippet": {
+            "publishedAt": "2020-10-25T23:35:23Z",
+            "channelId": "UCIQqvZbHSwX0yKNVK1MyYjQ",
+            "title": "Jump To A New Conclusion | Pastor Steven Furtick | Elevation Church",
+            "description": "The conclusion that you jump to is based on the belief that you start with.\n\nIn “Jump To A New Conclusion,” Pastor Steven Furtick of Elevation Church teaches us how to jump to the RIGHT conclusions instead of settling for the wrong ones. \n\nSection Titles:\n0:00 - Let’s Jump Right In (Luke 1, verses 39-45; Isaiah 55, verses 8-9)\n3:37 - Jump To A New Conclusion\n10:28 - Stop Trying To Figure Out How\n12:31 - It’s Based On The Belief You Start With\n15:05 - What Report Will You Believe?\n19:03 - Have You Been Fighting Battles Alone? (Luke 1, verse 45)\n22:30 - Did God Really Mean That?\n26:30 - Do You Believe God Likes You?\n28:18 - God’s Purpose Is Working In Your Life (Luke 1, verse 44)\n30:50 - This Is The One (Matthew 3, verses 11-12; John 1, verses 29-36)\n35:13 - When Doubt Enters Your Mind (Matthew 11, verse 3)\n40:44 - I Didn’t Expect This (Matthew 11, verse 5)\n42:44 - The Difference Between Belief and Truth\n44:10 - Don’t Trip (Matthew 11, verse 6)\n46:27 - This Will Strengthen Your Faith - JUMP JOHN JUMP\n49:30 - Are You Tripping Over Something That’s Not True?\n51:55 - Anchor Yourself In This (Isaiah 55, verse 8)\n54:55 - What God Spoke, He Will Fulfill\n\n#elevationchurch #stevenfurtick #jumptoanewconclusion #assumptions #beliefs #jumpjohnjump #2020sermon #onlinechurch #churchonline \n\nSubscribe to receive our latest messages: http://ele.vc/jeetED\n\nThis sermon is available in other languages:\nEspañol - https://youtu.be/jelVj0wPux0\nPortuguês - https://youtu.be/k8hdmyiEuJU\nна русском - https://youtu.be/JOo_Qd9Y8nM\n\nTo support this ministry and help us continue to reach people all around the world click here: http://elevationchurch.org/giving/\n\nSee what God can do through you. This is the vision of Elevation Church, led by Pastor Steven Furtick and based in Charlotte, NC with multiple locations throughout the US and Canada.\n\n——\nStay Connected\n\nWebsite: http://ele.vc/9pHOrc\nElevation Church Facebook: http://ele.vc/b9YVgW\nElevation Church Instagram: http://ele.vc/PQo0M3\nElevation Church Twitter: http://ele.vc/Andpt7\nSteven Furtick YouTube: http://ele.vc/tn2sxe\nSteven Furtick Facebook: http://ele.vc/5Fb3qR\nSteven Furtick Instagram: http://ele.vc/kLuTvj\nSteven Furtick Twitter: http://ele.vc/Uu9DZp\n\nJump To A New Conclusion | Pastor Steven Furtick | Elevation Church",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/mQ5KckFzsLw/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/mQ5KckFzsLw/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/mQ5KckFzsLw/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              },
+              "standard": {
+                "url": "https://i.ytimg.com/vi/mQ5KckFzsLw/sddefault.jpg",
+                "width": 640,
+                "height": 480
+              },
+              "maxres": {
+                "url": "https://i.ytimg.com/vi/mQ5KckFzsLw/maxresdefault.jpg",
+                "width": 1280,
+                "height": 720
+              }
+            },
+            "channelTitle": "Elevation Church",
+            "playlistId": "PLFrHDxoEf4t3R-eVb4dVvHsOMKV93pb68",
+            "position": 4,
+            "resourceId": {
+              "kind": "youtube#video",
+              "videoId": "mQ5KckFzsLw"
+            }
+          },
+          "contentDetails": {
+            "videoId": "mQ5KckFzsLw",
+            "videoPublishedAt": "2020-10-26T00:00:10Z"
+          }
+        }
+      ],
+      "pageInfo": {
+        "totalResults": 48,
+        "resultsPerPage": 5
+      }
+    }

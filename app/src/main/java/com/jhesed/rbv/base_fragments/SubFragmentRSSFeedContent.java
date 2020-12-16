@@ -1,7 +1,6 @@
 package com.jhesed.rbv.base_fragments;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -67,6 +65,7 @@ public class SubFragmentRSSFeedContent extends Fragment {
         viewModel = new ViewModelProvider(this).get(RSSViewModel.class);
 
         progressBar = layout.findViewById(R.id.progressBar);
+        TextView errorMessage = layout.findViewById(R.id.error_message);
 
         mRecyclerView = layout.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -101,13 +100,13 @@ public class SubFragmentRSSFeedContent extends Fragment {
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark);
         mSwipeRefreshLayout.canChildScrollUp();
         mSwipeRefreshLayout.setOnRefreshListener(() -> {
+            errorMessage.setVisibility(GONE);
             mAdapter.getArticleList().clear();
             mAdapter.notifyDataSetChanged();
             mSwipeRefreshLayout.setRefreshing(true);
             viewModel.fetchFeed(urlString);
         });
 
-        final TextView errorMessage = layout.findViewById(R.id.error_message);
         if (!isNetworkAvailable()) {
             progressBar.setVisibility(GONE);
             errorMessage.setVisibility(View.VISIBLE);
