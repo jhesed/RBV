@@ -37,7 +37,8 @@ public class FragmentOnlineServices extends Fragment {
                             case R.id.sub_nav_devotional1:
                                 // JSOS
                                 selectedFragment = SubFragmentVideoFeedsContent
-                                        .newInstance("UCgJi0hyM78LM3pAYdTM2e8g", "JSOS Church");
+                                        .newInstance("UCgJi0hyM78LM3pAYdTM2e8g", "JSOS Church",
+                                                null);
                                 break;
                         }
                         switch (item.getItemId()) {
@@ -45,7 +46,7 @@ public class FragmentOnlineServices extends Fragment {
                                 // Elevation
                                 selectedFragment = SubFragmentVideoFeedsContent
                                         .newInstance("UCIQqvZbHSwX0yKNVK1MyYjQ",
-                                                "Elevation Church");
+                                                "Elevation Church", null);
                                 break;
                         }
                         switch (item.getItemId()) {
@@ -53,21 +54,23 @@ public class FragmentOnlineServices extends Fragment {
                                 // Transformation
                                 selectedFragment = SubFragmentVideoFeedsContent
                                         .newInstance("UCYv-siSKd3Gn9IsliO95gIw",
-                                                "Transformation Church");
+                                                "Transformation Church", null);
                                 break;
                         }
                         switch (item.getItemId()) {
                             case R.id.sub_nav_devotional4:
                                 // Passion Church
                                 selectedFragment = SubFragmentVideoFeedsContent
-                                        .newInstance("UCzT4tQfAZEsm_yMql_10dpg", "Passion Church");
+                                        .newInstance("UCzT4tQfAZEsm_yMql_10dpg", "Passion Church",
+                                                "PLTKWB5pdvklwau8YCZHcztaNpGbmQtNCW");
                                 break;
                         }
                         switch (item.getItemId()) {
                             case R.id.sub_nav_devotional5:
                                 // Victory Estancia
                                 selectedFragment = SubFragmentVideoFeedsContent
-                                        .newInstance("UCf0C93fFPtf94s4z9uYxO3Q", "Victory Church");
+                                        .newInstance("UCf0C93fFPtf94s4z9uYxO3Q", "Victory Church",
+                                                null);
                                 break;
                         }
 
@@ -89,7 +92,7 @@ public class FragmentOnlineServices extends Fragment {
                 getFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout,
                 SubFragmentVideoFeedsContent
-                        .newInstance("UCgJi0hyM78LM3pAYdTM2e8g", "JSOS Church"));
+                        .newInstance("UCgJi0hyM78LM3pAYdTM2e8g", "JSOS Church", null));
         transaction.addToBackStack(null);
         transaction.commit();
 

@@ -26,6 +26,7 @@ import com.jhesed.rbv.adapters.RSSVideoViewModel;
 import com.jhesed.rbv.adapters.VideoAdapter;
 import com.jhesed.rbv.api.ApiClient;
 import com.jhesed.rbv.api.ApiInterface;
+import com.jhesed.rbv.pojo.DatumPlaylist;
 import com.jhesed.rbv.pojo.DatumPlaylistItem;
 import com.jhesed.rbv.pojo.DatumPlaylistItemSnippet;
 import com.jhesed.rbv.pojo.PlaylistItemResource;
@@ -33,6 +34,7 @@ import com.jhesed.rbv.pojo.PlaylistResource;
 import com.prof.youtubeparser.models.videos.Video;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -59,11 +61,11 @@ public class SubFragmentVideoFeedsContent extends Fragment {
     private ArrayList<Video> mVideoList = new ArrayList<>();
 
     public static SubFragmentVideoFeedsContent newInstance(String rssChannelId,
-                                                           String rssChannelTitle
-//                                                           String rssPlaylistId
+                                                           String rssChannelTitle,
+                                                           String rssPlaylistId
     ) {
         channelId = rssChannelId;
-//        playlistId = rssPlaylistId;
+        playlistId = rssPlaylistId;
         channelTitle = rssChannelTitle;
         return new SubFragmentVideoFeedsContent();
     }
@@ -86,7 +88,6 @@ public class SubFragmentVideoFeedsContent extends Fragment {
 
         viewModel = new ViewModelProvider(this).get(RSSVideoViewModel.class);
         viewModel.setChannelId(channelId);
-        viewModel.setPlayListId(playlistId);
 
         progressBar = layout.findViewById(R.id.progressBar);
 
@@ -149,7 +150,12 @@ public class SubFragmentVideoFeedsContent extends Fragment {
             errorMessage.setVisibility(View.VISIBLE);
         } else if (isNetworkAvailable()) {
             errorMessage.setVisibility(GONE);
-            callPlaylistApi();
+
+            if (playlistId != null) {
+                callPlaylistItemApi();
+            } else {
+                callPlaylistApi();
+            }
         }
         return layout;
     }
@@ -171,8 +177,10 @@ public class SubFragmentVideoFeedsContent extends Fragment {
                                    Response<PlaylistResource> response) {
 
                 PlaylistResource resource = response.body();
+
                 try {
-                    playlistId = resource.getItems().get(0).getId();
+                    List<DatumPlaylist> items = resource.getItems();
+                    playlistId = items.get(items.size() - 1).getId();
                 } catch (Exception e) {
                     playlistId = null;
                 }
@@ -200,38 +208,7 @@ public class SubFragmentVideoFeedsContent extends Fragment {
             @Override
             public void onResponse(Call<PlaylistItemResource> call,
                                    Response<PlaylistItemResource> response) {
-
-                PlaylistItemResource resource = response.body();
-
-                List<DatumPlaylistItem> items;
-
-                try {
-                    items = resource.getItems();
-
-                    for (int i = 0; i < items.size(); i++) {
-
-                        DatumPlaylistItemSnippet snippet = items.get(i).getSnippet();
-
-                        try {
-
-                            mVideoList.add(new Video(snippet.getTitle(),
-                                    snippet.getResourceId().getVideoId(),
-                                    snippet.getThumbnails().getStandard().getUrl(),
-                                    snippet.getPublishedAt()));
-                        } catch (Exception e) {
-
-                            e.printStackTrace();
-                        }
-                    }
-                    viewModel.setVideoLiveList(mVideoList);
-                } catch (Exception e) {
-
-                    viewModel.setVideoLiveList(new ArrayList<Video>());
-
-                    e.printStackTrace();
-                }
-
-                progressBar.setVisibility(GONE);
+                playlistItemCallback(response);
             }
 
             @Override
@@ -241,5 +218,40 @@ public class SubFragmentVideoFeedsContent extends Fragment {
             }
         });
 
+    }
+
+    private void playlistItemCallback(Response<PlaylistItemResource> response) {
+        PlaylistItemResource resource = response.body();
+
+        List<DatumPlaylistItem> items;
+
+        try {
+            items = resource.getItems();
+            Collections.reverse(items);
+
+            for (int i = 0; i < items.size(); i++) {
+
+                DatumPlaylistItemSnippet snippet = items.get(i).getSnippet();
+
+                try {
+
+                    mVideoList.add(new Video(snippet.getTitle(),
+                            snippet.getResourceId().getVideoId(),
+                            snippet.getThumbnails().getStandard().getUrl(),
+                            snippet.getPublishedAt().substring(0, 10)));
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+                }
+            }
+            viewModel.setVideoLiveList(mVideoList);
+        } catch (Exception e) {
+
+            viewModel.setVideoLiveList(new ArrayList<Video>());
+
+            e.printStackTrace();
+        }
+
+        progressBar.setVisibility(GONE);
     }
 }

@@ -51,9 +51,7 @@ public class ApiClient {
         Cache cache = null;
         try {
             cache = new Cache(new File(context.getCacheDir(), "http-cache"),
-//                    100 * 1024 * 1024); // 100 MB
-                    // TODO
-                    0); // 100 MB
+                    100 * 1024 * 1024); // 100 MB
         } catch (Exception e) {
 //            Timer.e( e, "Could not create Cache!" );
         }
@@ -68,9 +66,7 @@ public class ApiClient {
 
                 // re-write response header to force use of cache
                 CacheControl cacheControl = new CacheControl.Builder()
-//                        .maxAge(360, TimeUnit.MINUTES)
-                        // TODO
-                        .maxAge(1, TimeUnit.MICROSECONDS)
+                        .maxAge(360, TimeUnit.MINUTES)
                         .build();
 
                 return response.newBuilder()
@@ -88,9 +84,7 @@ public class ApiClient {
 
                 if (!isInternetAvailable(context)) {
                     CacheControl cacheControl = new CacheControl.Builder()
-//                            .maxStale(31, TimeUnit.DAYS)
-                            // TODO
-                            .maxStale(1, TimeUnit.MICROSECONDS)
+                            .maxStale(31, TimeUnit.DAYS)
                             .build();
 
                     request = request.newBuilder()
