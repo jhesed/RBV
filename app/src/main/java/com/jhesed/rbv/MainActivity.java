@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_random_bible_verse,
                 R.id.nav_prayer_journal,
                 R.id.nav_online_service,
+                R.id.nav_songs,
                 R.id.nav_devotionals,
                 R.id.nav_news,
                 R.id.nav_about)

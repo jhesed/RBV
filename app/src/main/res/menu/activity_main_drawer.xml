@@ -17,6 +17,10 @@
             android:icon="@drawable/ic_youtube"
             android:title="@string/online_service" />
         <item
+            android:id="@+id/nav_songs"
+            android:icon="@drawable/ic_youtube"
+            android:title="@string/christian_music" />
+        <item
             android:id="@+id/nav_devotionals"
             android:icon="@drawable/ic_menu_devotionals"
             android:title="@string/devotionals" />

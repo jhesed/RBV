@@ -134,8 +134,7 @@ public class SubFragmentVideoFeedsContent extends Fragment {
 
             @Override
             public void onRefresh() {
-
-                callPlaylistApi();
+                if (videos == null) callPlaylistApi();
 
 //                mAdapter.getList().clear();
 //                mAdapter.notifyDataSetChanged();
@@ -145,7 +144,7 @@ public class SubFragmentVideoFeedsContent extends Fragment {
         });
 
         final TextView errorMessage = layout.findViewById(R.id.error_message);
-        if (!isNetworkAvailable()) {
+        if (!isNetworkAvailable() && videos == null) {
             progressBar.setVisibility(GONE);
             errorMessage.setVisibility(View.VISIBLE);
         } else if (isNetworkAvailable()) {

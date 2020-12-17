@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/sub_nav1"
+        android:icon="@drawable/ic_services_jsos"
+        android:title="@string/jsos" />
+    <item
+        android:id="@+id/sub_nav2"
+        android:icon="@drawable/ic_services_elevation"
+        android:title="@string/elevation" />
+    <item
+        android:id="@+id/sub_nav3"
+        android:icon="@drawable/ic_services_hillsong"
+        android:title="@string/hillsong" />
+    <item
+        android:id="@+id/sub_nav4"
+        android:icon="@drawable/ic_services_passion"
+        android:title="@string/passion" />
+    <item
+        android:id="@+id/sub_nav5"
+        android:icon="@drawable/ic_services_victory"
+        android:title="@string/victory" />
+</menu>
