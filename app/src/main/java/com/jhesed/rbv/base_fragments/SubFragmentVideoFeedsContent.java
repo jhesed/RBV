@@ -134,23 +134,23 @@ public class SubFragmentVideoFeedsContent extends Fragment {
 
             @Override
             public void onRefresh() {
-                if (videos.isEmpty()) callPlaylistApi();
 
-//                mAdapter.getList().clear();
-//                mAdapter.notifyDataSetChanged();
-//                mSwipeRefreshLayout.setRefreshing(true);
+                mAdapter.getList().clear();
+                mAdapter.notifyDataSetChanged();
+                mSwipeRefreshLayout.setRefreshing(true);
 //                viewModel.fetchVideos();
+                if (videos == null) callPlaylistApi();
             }
         });
 
         final TextView errorMessage = layout.findViewById(R.id.error_message);
-        if (!isNetworkAvailable() && videos.isEmpty()) {
+        if (!isNetworkAvailable() && videos == null) {
             progressBar.setVisibility(GONE);
             errorMessage.setVisibility(View.VISIBLE);
         } else if (isNetworkAvailable()) {
             errorMessage.setVisibility(GONE);
 
-            if (videos.isEmpty()) {
+            if (videos == null) {
                 if (playlistId != null) {
                     callPlaylistItemApi();
                 } else {
