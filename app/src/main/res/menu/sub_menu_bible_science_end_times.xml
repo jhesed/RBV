@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/sub_nav1"
+        android:icon="@drawable/ark_encounter"
+        android:title="@string/answers_in_genesis_ark_encounter" />
+
+    <item
+        android:id="@+id/sub_nav2"
+        android:icon="@drawable/animal_encounter"
+        android:title="@string/answers_in_genesis_animal_encounter" />
+
+    <item
+        android:id="@+id/sub_nav3"
+        android:icon="@drawable/news"
+        android:title="@string/answers_in_genesis_news" />
+    <item
+        android:id="@+id/sub_nav4"
+        android:icon="@drawable/debates"
+        android:title="@string/kent_hovind_debates" />
+    <item
+        android:id="@+id/sub_nav5"
+        android:icon="@drawable/end"
+        android:title="@string/kent_hovind_debates_end_times" />
+</menu>

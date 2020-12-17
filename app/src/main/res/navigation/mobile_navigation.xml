@@ -42,6 +42,12 @@
         tools:layout="@layout/fragment_news" />
 
     <fragment
+        android:id="@+id/nav_bible_science_end_times"
+        android:name="com.jhesed.rbv.ui.bible_science_end_times.FragmentBibleScienceEndTimes"
+        android:label="@string/bible_science_end_times"
+        tools:layout="@layout/fragment_bible_science_end_times" />
+
+    <fragment
         android:id="@+id/nav_about"
         android:name="com.jhesed.rbv.ui.about.AboutFragment"
         android:label="@string/about"

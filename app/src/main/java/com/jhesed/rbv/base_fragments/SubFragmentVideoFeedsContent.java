@@ -134,7 +134,7 @@ public class SubFragmentVideoFeedsContent extends Fragment {
 
             @Override
             public void onRefresh() {
-                if (videos == null) callPlaylistApi();
+                if (videos.isEmpty()) callPlaylistApi();
 
 //                mAdapter.getList().clear();
 //                mAdapter.notifyDataSetChanged();
@@ -144,16 +144,18 @@ public class SubFragmentVideoFeedsContent extends Fragment {
         });
 
         final TextView errorMessage = layout.findViewById(R.id.error_message);
-        if (!isNetworkAvailable() && videos == null) {
+        if (!isNetworkAvailable() && videos.isEmpty()) {
             progressBar.setVisibility(GONE);
             errorMessage.setVisibility(View.VISIBLE);
         } else if (isNetworkAvailable()) {
             errorMessage.setVisibility(GONE);
 
-            if (playlistId != null) {
-                callPlaylistItemApi();
-            } else {
-                callPlaylistApi();
+            if (videos.isEmpty()) {
+                if (playlistId != null) {
+                    callPlaylistItemApi();
+                } else {
+                    callPlaylistApi();
+                }
             }
         }
         return layout;
@@ -200,7 +202,7 @@ public class SubFragmentVideoFeedsContent extends Fragment {
     public void callPlaylistItemApi() {
         Call<PlaylistItemResource>
                 call = apiPlaylistInterface
-                .getPlaylistVideos(playlistId, 20, BuildConfig.KEY, "snippet");
+                .getPlaylistVideos(playlistId, 30, BuildConfig.KEY, "snippet");
 
 
         call.enqueue(new Callback<PlaylistItemResource>() {

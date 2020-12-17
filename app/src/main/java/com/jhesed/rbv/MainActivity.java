@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_songs,
                 R.id.nav_devotionals,
                 R.id.nav_news,
+                R.id.nav_bible_science_end_times,
                 R.id.nav_about)
                 .setDrawerLayout(drawer)
                 .build();
