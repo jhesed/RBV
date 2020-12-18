@@ -95,7 +95,10 @@
     <string name="about11">This app is still in early stage, and I\'m doing it in my free time.
         Please be patient with me for any bug. Please file them, and I\'ll try to fix
         as soon as I can. If you\'re a developer, you can issue PR(s) to improve the codebase,
-        or add new features. You may contact me for source code.
+        or add new features. You may contact me for source code. Also, Youtube has a threshold
+        for maximum API calls we can do. If ever the sections with Youtube suddenly didn't
+        work, we might have reached the limit already. Please come back after another day,
+        and the limit should have reset. Please bare with me. Hehehehe.
     </string>
     <string name="about12">Future plan (very long term): Add Praise and Prayer Walls.
         Add social network where we can chat each other for counseling and prayer.
