@@ -59,6 +59,7 @@ public class RSSViewModel extends ViewModel {
                 // .charset(Charset.forName("ISO-8859-7"))
                 // .cacheExpirationMillis() and .context() not called because on Java side,
                 // caching is NOT supported
+                .cacheExpirationMillis(24L * 60L * 60L * 100L)
                 .build();
 
         parser.onFinish(new OnTaskCompleted() {
