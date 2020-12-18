@@ -46,6 +46,88 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/colorTextEmphasis" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/about4"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorTextEmphasis" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/about5"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorTextEmphasis" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/about6"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorTextEmphasis" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/about7"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorTextEmphasis" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/about8"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorTextEmphasis" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/about9"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorTextEmphasis" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/about10"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorTextEmphasis" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/about11"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorTextEmphasis" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/about12"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorTextEmphasis" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:padding="10dp"
+                android:text="@string/jhesed"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorTextEmphasis"
+                android:textStyle="italic" />
         </LinearLayout>
 
         <!--DIVIDER-->

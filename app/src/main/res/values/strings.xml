@@ -61,9 +61,45 @@
     <string name="edit_prayer_request">Edit Prayer Request</string>
 
     <string name="title_about">About</string>
-    <string name="about1">Random Bible Verse is a simple mobile application used for randomly generating Bible Verses on the fly. This can be useful when you simply want to refresh yourself with inspiring Bible Verses, or you want to share a Scripture snippet to someone else.  </string>
-    <string name="about2">This also now contains Prayer List Section, where you can create your custom prayer items.</string>
-    <string name="about3">In the future, we\'ll also add some Bible Trivia, and playable Online Services and Original Praise and Worship Music</string>
+    <string name="about1">Christian Toolkit\'s Vision is to make Gospel and Christian Resources
+    more accessible to people. This is not intended to replace your favorite devotional app,
+    but rather compliment them. It has 7 Sections.</string>
+    <string name="about2">Section 1: Random Bible Verse. This is useful when you want to
+    simply refresh yourself with inspiring Bible Verses, or you want to share a Scripture
+    snippet to someone else.</string>
+    <string name="about3">Section 2: Online Services. This compiles preaching resources
+    from different Churches. I am so blessed with these Churches and I always listen to
+    these Podcasts. Churches included are JSOS, Elevation, Transformation, Passion,
+    and Victory. I pray that God will use these messages to empower you too</string>
+    <string name="about4">Section 3: Prayer Journal. You can create, edit and delete custom
+    Prayer Items.</string>
+    <string name="about5">Section 4: Devotionals. This compiles resources from
+    free devotional RSS feeds. Word Points, Devotional Treasure, Our Daily Bread,
+    The Good News Herald, and Everyday with God are the RSS feeds included.</string>
+    <string name="about6">Section 5: News. This compiles resources from free news
+    RSS feeds. Included items are Christian News Journal, Answers in Genesis, Voice of Martyrs,
+    Christian Headlines, and Bible Gateway.</string>
+    <string name="about7">Section 6: Christian Music. Contains songs from different Christian
+        bands. JSOS, Elevation, Hillsong, Passion, and Victory Worship are the included bands.</string>
+    <string name="about8">Section 7: Bible, Science, End Times. Contains compilation of
+        youtube videos from Answers in Genesis and Kent Hovind tackling Science and the Bible,
+        and the End Times.</string>
+    <string name="about9">The resources used here are free. Hence, I should not be violating
+    laws. However, if you\'re one of the authors of the resources used in this app, and you\'re
+    not comfortable with it, please contact me. I\'ll be happy to comply with whatever we discuss.
+    </string>
+    <string name="about10">The application itself doesn\'t have ads. If you see ad from any page,
+        those ads are owned by the resources used. All income will be credited to them.
+        Let\'s support them.
+    </string>
+    <string name="about11">This app is still in early stage, and I\'m doing it in my free time.
+        Please be patient with me for any bug. Please file them, and I\'ll try to fix
+        as soon as I can. If you\'re a developer, you can issue PR(s) to improve the codebase,
+        or add new features. You may contact me for source code.
+    </string>
+    <string name="about12">Future plan (very long term): Add Praise and Prayer Walls.
+        Add social network where we can chat each other for counseling and prayer.
+    </string>
     <string name="developer_label">Developer:</string>
     <string name="donate_btc_label">Donate BTC:</string>
     <string name="developer_email_value">dev.jhesed@gmail.com</string>
@@ -105,4 +141,5 @@
     <string name="kent_hovind_debates">Debates</string>
     <string name="kent_hovind_debates_end_times">End Times</string>
     <string name="bible_science_end_times">Bible, Science, End Times</string>
+    <string name="jhesed">Jhesed</string>
 </resources>
