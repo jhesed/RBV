@@ -18,7 +18,6 @@
 package com.jhesed.rbv.adapters;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.text.method.LinkMovementMethod;
@@ -49,10 +48,8 @@ import java.util.Objects;
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
 
     private static boolean isDailyBread = false;
-    AlertDialog.Builder builder;
-    AlertDialog progressDialog;
-    private List<Article> articles;
-    private Context mContext;
+    private final List<Article> articles;
+    private final Context mContext;
     private WebView articleView;
 
     public ArticleAdapter(List<Article> list, Context context, boolean rssIsDailyBread) {

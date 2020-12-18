@@ -17,12 +17,12 @@ import java.util.Map;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-    private String TAG = "ExpandableListAdapter";
-    private Activity context;
-    private Map<String, List<String>> prayerCollections;
-    private Map<String, List<Integer>> prayerCollectionIDs;
-    private Map<String, List<String>> prayerCategories;
-    private List<String> prayers;
+    private final String TAG = "ExpandableListAdapter";
+    private final Activity context;
+    private final Map<String, List<String>> prayerCollections;
+    private final Map<String, List<Integer>> prayerCollectionIDs;
+    private final Map<String, List<String>> prayerCategories;
+    private final List<String> prayers;
 
     public ExpandableListAdapter(Activity context, List<String> prayers,
                                  Map<String, List<String>> prayerCollections,
@@ -65,7 +65,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = inflater.inflate(R.layout.accordion_item, null);
         }
 
-        TextView item = (TextView) convertView.findViewById(R.id.prayer_item);
+        TextView item = convertView.findViewById(R.id.prayer_item);
 
         item.setText(prayer);
         convertView.setTag(prayerId);
@@ -100,7 +100,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.accordion_group,
                     null);
         }
-        TextView item = (TextView) convertView.findViewById(R.id.group_title);
+        TextView item = convertView.findViewById(R.id.group_title);
         item.setTypeface(null, Typeface.BOLD);
         item.setText(prayerName);
         return convertView;
@@ -117,7 +117,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private void updateCategoryIcon(int groupPosition, int childPosition, View convertView) {
         // Update category icon
         final String category = (String) getChildCategory(groupPosition, childPosition);
-        final ImageView categoryObj = (ImageView) convertView.findViewById(R.id.category);
+        final ImageView categoryObj = convertView.findViewById(R.id.category);
 
 //        Log.d(this.TAG, "(ExpandableListAdapter.updateCategoryIcon) Got category: " + category);
         if (category.equals("PERSONAL")) {

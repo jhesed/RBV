@@ -34,7 +34,6 @@ import java.util.Map;
 public class SubFragmentPJPersonal extends Fragment {
 
     // Labels
-    private static final String TAG = "SubFragmentPJPersonal";
     private static final String PENDING_TITLE = "Pending";
     private static final String DONE_TITLE = "Done";
     private static final String ANSWERED_TITLE = "Answered";
@@ -50,7 +49,6 @@ public class SubFragmentPJPersonal extends Fragment {
     private final int RESET_DONE_ITEMS_SECONDS = 86400;  // 1 day
     List<String> groupList;
     List<String> childList;
-    List<Integer> childIDList;
     Map<String, List<String>> prayerCollection;
     Map<String, List<Integer>> prayerCollectionIDs;
     Map<String, List<String>> prayerCategories;
@@ -73,7 +71,7 @@ public class SubFragmentPJPersonal extends Fragment {
 
         initializeList();
         FloatingActionButton addButton =
-                (FloatingActionButton) layout.findViewById(R.id.add_prayer);
+                layout.findViewById(R.id.add_prayer);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +101,7 @@ public class SubFragmentPJPersonal extends Fragment {
         createGroupList();
         createCollection();
 
-        expListView = (ExpandableListView) layout.findViewById(R.id.prayer_list);
+        expListView = layout.findViewById(R.id.prayer_list);
         final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
                 getActivity(), groupList, prayerCollection, prayerCollectionIDs, prayerCategories);
 
@@ -239,16 +237,6 @@ public class SubFragmentPJPersonal extends Fragment {
             childList.add(model);
     }
 
-//    private void setGroupIndicatorToRight() {
-//        /* Get the screen width */
-//        DisplayMetrics dm = new DisplayMetrics();
-//        getWindowManager().getDefaultDisplay().getMetrics(dm);
-//        int width = dm.widthPixels;
-//
-//        expListView.setIndicatorBounds(width - getDipsFromPixel(35), width
-//                - getDipsFromPixel(5));
-//    }
-
     // Convert pixel to dip
     public int getDipsFromPixel(float pixels) {
         // Get the screen's density scale
@@ -256,13 +244,6 @@ public class SubFragmentPJPersonal extends Fragment {
         // Convert the dps to pixels, based on density scale
         return (int) (pixels * scale + 0.5f);
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.activity_main, menu);
-//        return true;
-//    }
 
     private void showDetails(Integer childId) {
         /**
@@ -280,9 +261,9 @@ public class SubFragmentPJPersonal extends Fragment {
         final AlertDialog dialog = builder.create();
 
         // Retrieve layout objects
-        final TextView titleObj = (TextView) layout.findViewById(R.id.dialogTitle);
-        final TextView contentObj = (TextView) layout.findViewById(R.id.content);
-        final TextView answeredObj = (TextView) layout.findViewById(R.id.answeredText);
+        final TextView titleObj = layout.findViewById(R.id.dialogTitle);
+        final TextView contentObj = layout.findViewById(R.id.content);
+        final TextView answeredObj = layout.findViewById(R.id.answeredText);
 
         // Retrieve details of prayer items from database
         Cursor cursor = dbHelper.select(childId);
@@ -300,13 +281,13 @@ public class SubFragmentPJPersonal extends Fragment {
         if (isAnswered == 1)
             isAnsweredText = "Yes";
 
-        // Update dialog conetnt
+        // Update dialog content
         titleObj.setText(title);
         contentObj.setText(content);
         answeredObj.setText(isAnsweredText);
 
         // close dialog box on click
-        Button okButton = (Button) layout.findViewById(R.id.dialogOk);
+        Button okButton = layout.findViewById(R.id.dialogOk);
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -319,7 +300,7 @@ public class SubFragmentPJPersonal extends Fragment {
         });
 
         // edit dialog box
-        ImageButton editButton = (ImageButton) layout.findViewById(R.id.edit_icon);
+        ImageButton editButton = layout.findViewById(R.id.edit_icon);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -344,9 +325,9 @@ public class SubFragmentPJPersonal extends Fragment {
         final AlertDialog dialog = builder.create();
 
         // Retrieve layout objects
-        final TextView titleObj = (TextView) layout.findViewById(R.id.prayer_title);
-        final TextView contentObj = (TextView) layout.findViewById(R.id.prayer_content);
-        final RadioGroup answeredObj = (RadioGroup) layout.findViewById(R.id.radio_answered_group);
+        final TextView titleObj = layout.findViewById(R.id.prayer_title);
+        final TextView contentObj = layout.findViewById(R.id.prayer_content);
+        final RadioGroup answeredObj = layout.findViewById(R.id.radio_answered_group);
         final int prayerId = childId;
 
         // Update content
@@ -360,7 +341,7 @@ public class SubFragmentPJPersonal extends Fragment {
         dialog.show();
 
         // close dialog box on click
-        ImageView cancelButton = (ImageView) layout.findViewById(R.id.cancel_icon);
+        ImageView cancelButton = layout.findViewById(R.id.cancel_icon);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -369,7 +350,7 @@ public class SubFragmentPJPersonal extends Fragment {
         });
 
         // submit button on click
-        Button okButton = (Button) layout.findViewById(R.id.dialogOk);
+        Button okButton = layout.findViewById(R.id.dialogOk);
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -402,7 +383,7 @@ public class SubFragmentPJPersonal extends Fragment {
         dialog.show();
 
         // close dialog box on click
-        Button cancelButton = (Button) layout.findViewById(R.id.cancel_icon);
+        Button cancelButton = layout.findViewById(R.id.cancel_icon);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -411,7 +392,7 @@ public class SubFragmentPJPersonal extends Fragment {
         });
 
         // submit button on click
-        Button okButton = (Button) layout.findViewById(R.id.dialogOk);
+        Button okButton = layout.findViewById(R.id.dialogOk);
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -439,32 +420,11 @@ public class SubFragmentPJPersonal extends Fragment {
         final AlertDialog dialog = builder.create();
 
         // Fetch form objects
-        final EditText titleObj = (EditText) layout.findViewById(R.id.prayer_title_content);
-        final EditText contentObj = (EditText) layout.findViewById(R.id.prayer_content);
-
-
-        // TODO: Uncomment if reminder feature is already available
-//        // Reminder Radio button
-//        RadioGroup groupRadio=(RadioGroup)layout.findViewById(R.id.radio_reminder);
-//        final TimePicker timePicker = (TimePicker) layout.findViewById(R.id.time_picker);
-//        groupRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//
-//            @Overrid4e
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//
-//                if(checkedId == R.id.radio_yes)
-//                {
-//                    timePicker.setVisibility(View.VISIBLE);
-//                }
-//                else if(checkedId == R.id.radio_no)
-//                {
-//                    timePicker.setVisibility(View.GONE);
-//                }
-//            }
-//        });
+        final EditText titleObj = layout.findViewById(R.id.prayer_title_content);
+        final EditText contentObj = layout.findViewById(R.id.prayer_content);
 
         // submit button on click
-        Button okButton = (Button) layout.findViewById(R.id.dialogOk);
+        Button okButton = layout.findViewById(R.id.dialogOk);
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -480,7 +440,7 @@ public class SubFragmentPJPersonal extends Fragment {
         });
 
         // close dialog box on click
-        ImageView cancelButton = (ImageView) layout.findViewById(R.id.cancel_icon);
+        ImageView cancelButton = layout.findViewById(R.id.cancel_icon);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -490,63 +450,4 @@ public class SubFragmentPJPersonal extends Fragment {
 
         dialog.show();
     }
-
-    // Navigation Bar
-
-//    @Override
-//    public void onBackPressed() {
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.navigation, menu);
-//        return true;
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
-//    @SuppressWarnings("StatementWithEmptyBody")
-//    @Override
-//    public boolean onNavigationItemSelected(MenuItem item) {
-//        // Handle navigation view item clicks here.
-//        int id = item.getItemId();
-//
-////        if (id == R.id.nav_camera) {
-////            // Handle the camera action
-////        } else if (id == R.id.nav_gallery) {
-////
-////        } else if (id == R.id.nav_about) {
-////
-////        } else if (id == R.id.nav_manage) {
-////
-////        } else if (id == R.id.nav_share) {
-////
-////        } else if (id == R.id.nav_send) {
-////
-////        }
-//
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        drawer.closeDrawer(GravityCompat.START);
-//        return true;
-//    }
 }

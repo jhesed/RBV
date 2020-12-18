@@ -23,8 +23,8 @@ import java.util.regex.Pattern;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
 
+    private final SubFragmentVideoFeedsContent mActivity;
     private List<Video> videos;
-    private SubFragmentVideoFeedsContent mActivity;
 
     public VideoAdapter(List<Video> list, SubFragmentVideoFeedsContent activity) {
         this.videos = list;
@@ -109,24 +109,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
                 .fit()
                 .centerCrop()
                 .into(viewHolder.image);
-
-//        //show statistic of the selected video
-//        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mActivity.getVideoStats(videoId);
-//            }
-//        });
-//
-//        //open the video on Youtube
-//        viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View view) {
-//                Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-//                mActivity.startActivity(intent1);
-//                return false;
-//            }
-//        });
 
         //open the video on Youtube
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

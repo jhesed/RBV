@@ -30,9 +30,8 @@ import java.util.ArrayList;
 
 public class RSSViewModel extends ViewModel {
 
+    private final MutableLiveData<String> snackbar = new MutableLiveData<>();
     private MutableLiveData<Channel> articleListLive = null;
-
-    private MutableLiveData<String> snackbar = new MutableLiveData<>();
 
     public MutableLiveData<Channel> getChannel() {
         if (articleListLive == null) {

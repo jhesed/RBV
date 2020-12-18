@@ -50,6 +50,7 @@ public class SubFragmentVideoFeedsContent extends Fragment {
     private static String channelTitle;
     private static String playlistId;
     private static ArrayList<String> videos;
+    private final ArrayList<Video> mVideoList = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private VideoAdapter mAdapter;
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -57,8 +58,6 @@ public class SubFragmentVideoFeedsContent extends Fragment {
     private RSSVideoViewModel viewModel;
     private ScrollView relativeLayout;
     private TextView sourceTitleTextView;
-
-    private ArrayList<Video> mVideoList = new ArrayList<>();
 
     public static SubFragmentVideoFeedsContent newInstance(String rssChannelId,
                                                            String rssChannelTitle,
@@ -138,8 +137,13 @@ public class SubFragmentVideoFeedsContent extends Fragment {
                 mAdapter.getList().clear();
                 mAdapter.notifyDataSetChanged();
                 mSwipeRefreshLayout.setRefreshing(true);
-//                viewModel.fetchVideos();
-                if (videos == null) callPlaylistApi();
+                if (videos == null) {
+                    if (playlistId != null) {
+                        callPlaylistItemApi();
+                    } else {
+                        callPlaylistApi();
+                    }
+                }
             }
         });
 

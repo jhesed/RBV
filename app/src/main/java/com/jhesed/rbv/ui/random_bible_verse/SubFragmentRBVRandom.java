@@ -43,7 +43,7 @@ public class SubFragmentRBVRandom extends Fragment {
 
         randomizeVerse(layout);
 
-        Button randomButton = (Button) layout.findViewById(R.id.button_random);
+        Button randomButton = layout.findViewById(R.id.button_random);
         randomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,28 +63,28 @@ public class SubFragmentRBVRandom extends Fragment {
                 cursor.getString(cursor.getColumnIndex(
                         BibleVerseContract.BibleVerseEntry.COL_TITLE));
         TextView titleTextView =
-                (TextView) layout.findViewById(R.id.verse_title);
+                layout.findViewById(R.id.verse_title);
         titleTextView.setText(title);
 
         // Set MBB Content
         final String mbb =
                 cursor.getString(cursor.getColumnIndex(
                         BibleVerseContract.BibleVerseEntry.COL_MBB));
-        TextView mbbTextView = (TextView) layout.findViewById(R.id.text_mbb);
+        TextView mbbTextView = layout.findViewById(R.id.text_mbb);
         mbbTextView.setText(mbb);
 
         // Set NIV Content
         final String niv =
                 cursor.getString(cursor.getColumnIndex(
                         BibleVerseContract.BibleVerseEntry.COL_NIV));
-        TextView nivTextView = (TextView) layout.findViewById(R.id.text_niv);
+        TextView nivTextView = layout.findViewById(R.id.text_niv);
         nivTextView.setText(niv);
 
         // Set NASB Content
         final String nasb =
                 cursor.getString(cursor.getColumnIndex(
                         BibleVerseContract.BibleVerseEntry.COL_NASB));
-        TextView nasbTextView = (TextView) layout.findViewById(R.id.text_nasb);
+        TextView nasbTextView = layout.findViewById(R.id.text_nasb);
         nasbTextView.setText(nasb);
     }
 
