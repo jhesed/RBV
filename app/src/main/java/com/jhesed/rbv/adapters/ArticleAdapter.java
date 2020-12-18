@@ -170,10 +170,10 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title;
-        TextView pubDate;
-        ImageView image;
-        TextView category;
+        final TextView title;
+        final TextView pubDate;
+        final ImageView image;
+        final TextView category;
 
         public ViewHolder(View itemView) {
 

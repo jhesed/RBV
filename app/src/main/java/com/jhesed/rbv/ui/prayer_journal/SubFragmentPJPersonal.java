@@ -82,9 +82,9 @@ public class SubFragmentPJPersonal extends Fragment {
     }
 
     private void initializeList() {
-        /**
-         * Initialize expandable list of prayer items
-         * **/
+        /*
+          Initialize expandable list of prayer items
+          **/
 
         // Initialize lists
         pendingItems = new ArrayList<>();
@@ -182,7 +182,7 @@ public class SubFragmentPJPersonal extends Fragment {
     private void getPrayerItems(int isDone, int isAnswered, int day) {
 
         Cursor cursor = dbHelper.selectAll(isDone, day, isAnswered);
-        int epochNow = (int) (System.currentTimeMillis() / 1000l);
+        int epochNow = (int) (System.currentTimeMillis() / 1000L);
 
         while (cursor.moveToNext()) {
 
@@ -233,8 +233,7 @@ public class SubFragmentPJPersonal extends Fragment {
 
     private void loadChild(ArrayList<String> prayerModels) {
         childList = new ArrayList<String>();
-        for (String model : prayerModels)
-            childList.add(model);
+        childList.addAll(prayerModels);
     }
 
     // Convert pixel to dip
@@ -246,7 +245,7 @@ public class SubFragmentPJPersonal extends Fragment {
     }
 
     private void showDetails(Integer childId) {
-        /**
+        /*
          Displays details on prayer item
          */
 
@@ -314,7 +313,7 @@ public class SubFragmentPJPersonal extends Fragment {
 
     private void editDetails(int childId, String title, final String content,
                              final int isAnswered) {
-        /**
+        /*
          Edit details on prayer item
          */
 
@@ -368,7 +367,7 @@ public class SubFragmentPJPersonal extends Fragment {
     }
 
     private void showDeleteDialog(int childId) {
-        /**
+        /*
          Delete details on prayer item
          */
 
@@ -405,7 +404,7 @@ public class SubFragmentPJPersonal extends Fragment {
     }
 
     private void addPrayerItem() {
-        /**
+        /*
          Add prayer item
          */
 

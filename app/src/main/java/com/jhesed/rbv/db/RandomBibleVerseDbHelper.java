@@ -216,11 +216,11 @@ public class RandomBibleVerseDbHelper extends SQLiteOpenHelper {
             StringBuilder sb = new StringBuilder(startString);
             String[] str = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
-            sb.append("'" + str[0] + "',");
-            sb.append("'" + str[1].replace("\"", "") + "',");
-            sb.append("'" + str[2].replace("\"", "") + "',");
-            sb.append("'" + str[3].replace("\"", "") + "',");
-            sb.append("'" + str[4].replace("\"", "") + "'");
+            sb.append("'").append(str[0]).append("',");
+            sb.append("'").append(str[1].replace("\"", "")).append("',");
+            sb.append("'").append(str[2].replace("\"", "")).append("',");
+            sb.append("'").append(str[3].replace("\"", "")).append("',");
+            sb.append("'").append(str[4].replace("\"", "")).append("'");
 
             sb.append(endString);
             db.execSQL(sb.toString());

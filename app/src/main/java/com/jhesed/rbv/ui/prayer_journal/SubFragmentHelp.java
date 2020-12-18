@@ -8,12 +8,9 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.jhesed.rbv.R;
-import com.jhesed.rbv.db.RandomBibleVerseDbHelper;
 
 
 public class SubFragmentHelp extends Fragment {
-
-    RandomBibleVerseDbHelper db;
 
     public static SubFragmentHelp newInstance() {
         return new SubFragmentHelp();
@@ -27,10 +24,8 @@ public class SubFragmentHelp extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View layout =
-                inflater.inflate(
-                        R.layout.sub_fragment_prayer_journal_tutorial,
-                        container, false);
-        return layout;
+        return inflater.inflate(
+                R.layout.sub_fragment_prayer_journal_tutorial,
+                container, false);
     }
 }

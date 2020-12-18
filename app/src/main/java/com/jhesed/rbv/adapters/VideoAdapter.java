@@ -135,9 +135,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title;
-        TextView pubDate;
-        ImageView image;
+        final TextView title;
+        final TextView pubDate;
+        final ImageView image;
 
         ViewHolder(View itemView) {
 

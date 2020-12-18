@@ -11,7 +11,7 @@ public class PrayerContract {
     public static final String DB_NAME = "jhesed.rbv.prayerDAO";
     public static final int DB_VERSION = 1;
 
-    public class PrayerEntry implements BaseColumns {
+    public static class PrayerEntry implements BaseColumns {
         public static final String TABLE = "prayer";
 
         // properties

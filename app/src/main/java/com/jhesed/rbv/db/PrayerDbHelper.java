@@ -96,7 +96,7 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
     public void update(int id, CharSequence title, CharSequence content, int isAnswered) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        int epochNow = (int) (System.currentTimeMillis() / 1000l);
+        int epochNow = (int) (System.currentTimeMillis() / 1000L);
 
         String query = "UPDATE " + PrayerContract.PrayerEntry.TABLE +
                 " SET " + PrayerContract.PrayerEntry.COL_TITLE + "=\"" + title + "\", " +
@@ -111,7 +111,7 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
     public void prayerDone(int id, int isDone) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        int epochNow = (int) (System.currentTimeMillis() / 1000l);
+        int epochNow = (int) (System.currentTimeMillis() / 1000L);
         String query = "UPDATE " + PrayerContract.PrayerEntry.TABLE +
                 " SET " + PrayerContract.PrayerEntry.COL_IS_DONE + "=\"" + isDone + "\" " +
                 " ," + PrayerContract.PrayerEntry.COL_DATE_MODIFIED + "=\"" + epochNow + "\" " +
@@ -134,7 +134,7 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
         values.put(PrayerContract.PrayerEntry.COL_CONTENT, content);
         values.put(PrayerContract.PrayerEntry.COL_DAY, getDayInInteger());
         values.put(PrayerContract.PrayerEntry.COL_DATE_MODIFIED,
-                (int) (System.currentTimeMillis() / 1000l));
+                (int) (System.currentTimeMillis() / 1000L));
         values.put(PrayerContract.PrayerEntry.COL_CATEGORY, category);
         db.insertWithOnConflict(PrayerContract.PrayerEntry.TABLE,
                 null, values, SQLiteDatabase.CONFLICT_REPLACE);
@@ -248,17 +248,17 @@ public class PrayerDbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         db.beginTransaction();
 
-        int epochNow = (int) (System.currentTimeMillis() / 1000l);
+        int epochNow = (int) (System.currentTimeMillis() / 1000L);
 
         while ((line = buffer.readLine()) != null) {
             StringBuilder sb = new StringBuilder(startString);
             String[] str = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
-            sb.append("'" + str[0] + "',");
-            sb.append("'" + str[1].replace("\"", "") + "',");
-            sb.append("'" + str[2].replace("\"", "") + "',");
-            sb.append("'" + str[3].replace("\"", "") + "',");
-            sb.append("'" + epochNow + "'");
+            sb.append("'").append(str[0]).append("',");
+            sb.append("'").append(str[1].replace("\"", "")).append("',");
+            sb.append("'").append(str[2].replace("\"", "")).append("',");
+            sb.append("'").append(str[3].replace("\"", "")).append("',");
+            sb.append("'").append(epochNow).append("'");
 
             sb.append(endString);
             db.execSQL(sb.toString());

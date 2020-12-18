@@ -7,7 +7,7 @@ public class BibleVerseContract {
     public static final String DB_NAME = "jhesed.rbv.RBVDao";
     public static final int DB_VERSION = 1;
 
-    public class BibleVerseEntry implements BaseColumns {
+    public static class BibleVerseEntry implements BaseColumns {
         public static final String TABLE = "bible_verse";
 
         // properties
