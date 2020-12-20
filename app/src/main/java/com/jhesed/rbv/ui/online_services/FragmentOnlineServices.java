@@ -38,7 +38,7 @@ public class FragmentOnlineServices extends Fragment {
                                 // JSOS
                                 selectedFragment = SubFragmentVideoFeedsContent
                                         .newInstance("UCgJi0hyM78LM3pAYdTM2e8g", "JSOS Church",
-                                                null);
+                                                "PL_S2AoNGdiXdQKgA9kD-7y4Q_EWN5UyoC");
                                 break;
                         }
                         switch (item.getItemId()) {
@@ -92,7 +92,7 @@ public class FragmentOnlineServices extends Fragment {
                 getFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout,
                 SubFragmentVideoFeedsContent
-                        .newInstance("UCgJi0hyM78LM3pAYdTM2e8g", "JSOS Church", null));
+                        .newInstance("UCgJi0hyM78LM3pAYdTM2e8g", "JSOS Church", "PL_S2AoNGdiXdQKgA9kD-7y4Q_EWN5UyoC"));
         transaction.addToBackStack(null);
         transaction.commit();
 
