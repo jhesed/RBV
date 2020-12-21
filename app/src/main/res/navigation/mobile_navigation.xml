@@ -7,49 +7,49 @@
 
     <fragment
         android:id="@+id/nav_random_bible_verse"
-        android:name="com.jhesed.rbv.ui.random_bible_verse.FragmentRBV"
+        android:name="com.jhesed.selah.ui.random_bible_verse.FragmentRBV"
         android:label="@string/menu_random_bible_verse"
         tools:layout="@layout/fragment_random_bible_verse" />
 
     <fragment
         android:id="@+id/nav_prayer_journal"
-        android:name="com.jhesed.rbv.ui.prayer_journal.FragmentPJ"
+        android:name="com.jhesed.selah.ui.prayer_journal.FragmentPJ"
         android:label="@string/menu_prayer_journal"
         tools:layout="@layout/fragment_prayer_journal" />
 
     <fragment
         android:id="@+id/nav_online_service"
-        android:name="com.jhesed.rbv.ui.online_services.FragmentOnlineServices"
+        android:name="com.jhesed.selah.ui.online_services.FragmentOnlineServices"
         android:label="@string/online_service"
         tools:layout="@layout/sub_fragment_online_service" />
 
     <fragment
         android:id="@+id/nav_songs"
-        android:name="com.jhesed.rbv.ui.songs.FragmentSongs"
+        android:name="com.jhesed.selah.ui.songs.FragmentSongs"
         android:label="@string/songs"
         tools:layout="@layout/sub_fragment_songs" />
 
     <fragment
         android:id="@+id/nav_devotionals"
-        android:name="com.jhesed.rbv.ui.devotionals.FragmentDevotionals"
+        android:name="com.jhesed.selah.ui.devotionals.FragmentDevotionals"
         android:label="@string/devotionals"
         tools:layout="@layout/fragment_devotionals" />
 
     <fragment
         android:id="@+id/nav_news"
-        android:name="com.jhesed.rbv.ui.news.FragmentNews"
+        android:name="com.jhesed.selah.ui.news.FragmentNews"
         android:label="@string/news"
         tools:layout="@layout/fragment_news" />
 
     <fragment
         android:id="@+id/nav_bible_science_end_times"
-        android:name="com.jhesed.rbv.ui.bible_science_end_times.FragmentBibleScienceEndTimes"
+        android:name="com.jhesed.selah.ui.bible_science_end_times.FragmentBibleScienceEndTimes"
         android:label="@string/bible_science_end_times"
         tools:layout="@layout/fragment_bible_science_end_times" />
 
     <fragment
         android:id="@+id/nav_about"
-        android:name="com.jhesed.rbv.ui.about.AboutFragment"
+        android:name="com.jhesed.selah.ui.about.AboutFragment"
         android:label="@string/about"
         tools:layout="@layout/fragment_about" />
 </navigation>

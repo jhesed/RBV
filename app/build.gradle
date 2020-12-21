@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.jhesed.rbv"
+        applicationId "com.jhesed.selah"
         minSdkVersion 28
         targetSdkVersion 30
         versionCode 1

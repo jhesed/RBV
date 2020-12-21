@@ -1,9 +1,9 @@
 <resources>
 
-    <string name="app_name">Random Bible Verse</string>
+    <string name="app_name">Selah Devotionals</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Christian Toolkit</string>
+    <string name="nav_header_title">Selah Devotionals</string>
     <string name="nav_header_subtitle">dev.jhesed@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -14,8 +14,8 @@
     <string name="menu_devotionals">Devotionals</string>
 
     <!-- Sub Menus -->
-    <string name="menu_rbv_random">Random</string>
-    <string name="menu_rbv_share">Share</string>
+    <string name="menu_selah_random">Random</string>
+    <string name="menu_selah_share">Share</string>
 
     <!-- Release1 PJ Menus -->
     <string name="menu_pj_prayer_items">Prayer Items</string>
@@ -61,7 +61,7 @@
     <string name="edit_prayer_request">Edit Prayer Request</string>
 
     <string name="title_about">About</string>
-    <string name="about1">Christian Toolkit\'s Vision is to make Gospel and Christian Resources
+    <string name="about1">Selah Devotionals\' Vision is to make Gospel and Christian Resources
     more accessible to people. This is not intended to replace your favorite devotional app,
     but rather compliment them. It has 7 Sections.</string>
     <string name="about2">Section 1: Random Bible Verse. This is useful when you want to
@@ -131,7 +131,7 @@
     <string name="online_service">Online Services</string>
     <string name="jsos">JSOS</string>
     <string name="victory">Victory</string>
-    <string name="elevation">Elevation</string>
+    <string name="elevation">Elevation</string>0
     <string name="transformation">Transformation</string>
     <string name="passion">Passion</string>
     <string name="check_network">Please check your internet connection.</string>

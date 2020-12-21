@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:orientation="vertical"
-    tools:context="com.jhesed.rbv.ui.about.AboutFragment">
+    tools:context="com.jhesed.selah.ui.about.AboutFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
