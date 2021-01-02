@@ -46,7 +46,7 @@ public class SubFragmentPJPersonal extends Fragment {
     private static ArrayList<String> pendingCategoryItems;
     private static ArrayList<String> doneCategoryItems;
     private static ArrayList<String> answeredCategoryItems;
-    private final int RESET_DONE_ITEMS_SECONDS = 86400;  // 1 day
+    private final int RESET_DONE_ITEMS_SECONDS = 72000;  // 20 hours
     List<String> groupList;
     List<String> childList;
     Map<String, List<String>> prayerCollection;
