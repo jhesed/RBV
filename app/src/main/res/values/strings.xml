@@ -149,7 +149,7 @@
     <!-- CDHD -->
 
     <string name="latest">Latest</string>
-    <string name="recent">Recent</string>
+    <string name="recent">This Month</string>
     <string name="cdhd">CDHD</string>
     <string name="world_history_label">World History</string>
     <string name="bible_verse_label">Bible Verse</string>
