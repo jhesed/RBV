@@ -13,6 +13,10 @@
             android:icon="@drawable/ic_youtube"
             android:title="@string/online_service" />
         <item
+            android:id="@+id/nav_cdhd"
+            android:icon="@drawable/ic_cdhd"
+            android:title="@string/cdhd" />
+        <item
             android:id="@+id/nav_prayer_journal"
             android:icon="@drawable/ic_menu_prayer_journal"
             android:title="@string/menu_prayer_journal" />

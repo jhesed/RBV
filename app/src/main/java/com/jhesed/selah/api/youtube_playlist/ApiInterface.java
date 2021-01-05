@@ -1,7 +1,7 @@
-package com.jhesed.selah.api;
+package com.jhesed.selah.api.youtube_playlist;
 
-import com.jhesed.selah.pojo.PlaylistItemResource;
-import com.jhesed.selah.pojo.PlaylistResource;
+import com.jhesed.selah.pojo.youtube_playlist.PlaylistItemResource;
+import com.jhesed.selah.pojo.youtube_playlist.PlaylistResource;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

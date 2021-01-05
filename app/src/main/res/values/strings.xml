@@ -145,4 +145,15 @@
     <string name="kent_hovind_debates_end_times">End Times</string>
     <string name="bible_science_end_times">Bible, Science, End Times</string>
     <string name="jhesed">Jhesed</string>
+
+    <!-- CDHD -->
+
+    <string name="latest">Latest</string>
+    <string name="recent">Recent</string>
+    <string name="cdhd">CDHD</string>
+    <string name="world_history_label">World History</string>
+    <string name="bible_verse_label">Bible Verse</string>
+    <string name="philippine_history_label">Philippine History</string>
+    <string name="prayer_focus_label">Prayer Focus</string>
+    <string name="connection_error">No data available yet. Be a volunteer.</string>
 </resources>

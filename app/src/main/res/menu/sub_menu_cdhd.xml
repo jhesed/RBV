@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_today"
+        android:icon="@android:drawable/ic_menu_today"
+        android:tint="@android:color/black"
+        android:title="@string/latest" />
+
+    <item
+        android:id="@+id/navigation_month"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:tint="@android:color/black"
+        android:title="@string/recent" />
+</menu>

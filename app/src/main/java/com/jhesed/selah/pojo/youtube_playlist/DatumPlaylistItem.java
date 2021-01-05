@@ -1,10 +1,14 @@
-package com.jhesed.selah.pojo;
+package com.jhesed.selah.pojo.youtube_playlist;
 
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DatumPlaylist {
+public class DatumPlaylistItem {
+
+    @SerializedName("snippet")
+    @Expose
+    private DatumPlaylistItemSnippet snippet = null;
 
     @SerializedName("etag")
     @Expose
@@ -13,6 +17,14 @@ public class DatumPlaylist {
     @SerializedName("id")
     @Expose
     private String id;
+
+    public DatumPlaylistItemSnippet getSnippet() {
+        return snippet;
+    }
+
+    public void setSnippet() {
+        this.snippet = snippet;
+    }
 
     public String getEtag() {
         return etag;
@@ -29,4 +41,5 @@ public class DatumPlaylist {
     public void setId() {
         this.id = id;
     }
+
 }

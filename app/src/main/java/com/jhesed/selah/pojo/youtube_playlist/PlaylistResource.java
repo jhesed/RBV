@@ -1,4 +1,4 @@
-package com.jhesed.selah.pojo;
+package com.jhesed.selah.pojo.youtube_playlist;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -1,0 +1,55 @@
+My android app's vision is to make Devotional resources more reachable to people.  Hence, I compiled free RSS / youtube videos from different Christian groups, and grouped them by category, for easier access.  The actual videos itself will be played using the installed youtube app in the device.
+
+Included youtube videos are Online Worship Services, Christian Songs, and Theologies from:
+- JSOS Church
+- Elevation Church
+- Transformation Church
+- Passion Church
+- Hillsong Church
+- Victory Church
+
+
+-------------
+
+1. User opens the Selah Devotionals App
+2. User clicked "Online Services" Section and the sub tabs in it
+2.1. App calls Youtube API to fetch most recent playlist of channel (1 API call times 5 churches; cached for 6 hours)
+2.2. App fetches latest X videos from playlist from 2.1 (1 API call times 5 churches; cached for 6 hours)
+
+3. User clicked "Christian Music" Section and the sub tabs in it
+3.1. App calls Youtube API to fetch most recent playlist of channel (1 API call times 5 churches; cached for 6 hours)
+3.2. App fetches latest X videos from playlist from 2.1 (1 API call times 5 churches; cached for 6 hours)
+
+
+4. User clicked "Bible, Science, End Times" Section and the sub tabs in it
+4.1. App calls Youtube API to fetch most recent playlist of channel (1 API call times 5 churches; cached for 6 hours)
+4.2. App fetches latest X videos from playlist from 2.1 (1 API call times 5 churches; cached for 6 hours)
+
+---------------
+2 Calls for each displayed playlist (1 for retrieving most recent playlist, the other for fetching the actual videos)
+There are 5 churches for each tab.  Breakdown per User
+
+2 x 5 calls for Online services = 10
+2 x 5 calls for Christian Music = 10
+2 x 5 calls for Bible, Science, End Times = 10
+
+Total: 30 units per user cached per day
+
+Total number of Christians around the world:  ~2Billion
+Total number of Youversion app (as reference to possible number of users: 300 million)
+
+Total target of initial users: 10000
+= 10,000 x 30 = 300,000 units
+
+NOTE:
+The app just launched today and have 0 users. The current quota will only support 333 users. I want to request to extend it while we're in the initial phase.  After the approval, I plan on endorsing it to multiple churches around the globe. In Elevation Church alone,  there are 14000 members.  I want them to use the app without experiencing the quota limit.
+
+--------------
+3 sections of the android app won't work
+
+
+-----------------
+
+Initially, I used the "search" functionality.  But it cost me 100 units per call.  Since there are 15 channels, that's 1500 units per user.  I already optimized it to use get playlist and videos APIs, which only cost 30 units.  Also, I added caching as well.
+Total target of initial users: 10000
+= 10,000 x 30 = 300,000 units
