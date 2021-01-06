@@ -8,8 +8,8 @@ android {
         applicationId "com.jhesed.selah"
         minSdkVersion 25
         targetSdkVersion 30
-        versionCode 3
-        versionName "3"
+        versionCode 4
+        versionName "4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "KEY", KEY)
