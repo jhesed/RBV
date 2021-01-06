@@ -29,7 +29,7 @@ public class APIClient {
     public static Retrofit getClient(Context context) {
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://cdhd.byethost7.com/")
+                .baseUrl("https://cdhd.000webhostapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(provideOkHttpClient(context))
                 .build();
